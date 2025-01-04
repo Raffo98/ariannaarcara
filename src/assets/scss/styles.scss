@@ -1,0 +1,236 @@
+@font-face {
+  font-family: 'WorkSans';
+  src: url("~@/assets/fonts/WorkSans-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: 'sf';
+  src: url("~@/assets/fonts/SFProDisplay-Regular.woff");
+}
+
+@font-face {
+  font-family: 'sfbd';
+  src: url("~@/assets/fonts/SFProDisplay-Bold.woff");
+}
+
+@font-face {
+  font-family: 'sfsemibd';
+  src: url("~@/assets/fonts/SFProDisplay-Semibold.woff");
+}
+
+@font-face {
+  font-family: 'sfi';
+  src: url("~@/assets/fonts/SFProDisplay-Regular.woff");
+}
+
+
+
+@font-face {
+  font-family: 'IBMPlexMono';
+  src: url("~@/assets/fonts/IBMPlexMono-SemiBold.woff2");
+}
+// @font-face {
+//   font-family: 'Open Sans';
+//   font-style: italic;
+//   src: url("~@/assets/fonts/OpenSans-Italic.ttf");
+// }
+
+@mixin header-bold {
+  font-family: 'sfbd';
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 100%;
+}
+
+@mixin header {
+  font-family: 'sf';
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 100%;
+  font-weight: 600;
+
+}
+
+@mixin hero {
+  font-family: 'sfi';
+  font-size: clamp(17.905px, 1.119rem + ((1vw - 3.2px) * 1.147), 28px);
+  font-style: italic;
+  line-height: 1.5;
+  font-weight: 850;
+}
+
+@mixin text-S {
+  font-family: 'sf';
+  font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.455), 18px);
+  font-style: normal;
+  font-weight: 600;
+}
+
+@mixin text-SS {
+  font-family: 'sf';
+  font-size: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.227), 1rem);
+  font-style: normal;
+  font-weight: 600;
+}
+
+@mixin details {
+  font-family: 'sf';
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@mixin title {
+  font-family: 'sfsemibd';
+  font-size: clamp(18.959px, 1.185rem + ((1vw - 3.2px) * 1.255), 30px);
+  font-style: normal;
+}
+
+
+
+///
+
+@mixin h1 {
+  font-family: 'WorkSans';
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: -2.16px;
+}
+
+
+@mixin h1 {
+  font-family: 'WorkSans';
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: -2.16px;
+}
+
+@mixin h1-m {
+  font-family: 'WorkSans';
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 200%;
+  letter-spacing: -2.16px;
+}
+
+@mixin h2 {
+  font-family: 'WorkSans';
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 39px;
+  letter-spacing: -0.36px;
+  text-transform: uppercase; 
+}
+
+@mixin services-text {
+  font-family: 'WorkSans';
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 135%;
+  letter-spacing: -0.36px;
+}
+
+@mixin text {
+  font-family: 'WorkSans';
+  font-size: 1.56rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: -0.25px;
+}
+
+@mixin paragraph {
+  font-family: 'WorkSans';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0.32px;
+}
+
+@mixin paragraph-bold {
+  font-family: 'WorkSans';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  letter-spacing: 0.32px;
+}
+
+@mixin section-style {
+  font-family: 'WorkSans';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.32px;
+}
+
+@mixin paragraph-m {
+  font-family: 'WorkSans';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  text-transform: uppercase; 
+}
+
+@mixin body-large {
+  font-family: 'WorkSans';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  // text-transform: uppercase; 
+}
+
+@mixin news-details {
+  font-family: 'IBMPlexMono';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* 137.5% */
+  text-transform: uppercase; 
+}
+
+@mixin card-role {
+  font-family: 'IBMPlexMono';
+  font-size: 0.8rem;
+  font-style: normal;
+  line-height: 22px; /* 137.5% */
+  text-transform: uppercase; 
+}
+
+* {
+  --color-black: rgba(23, 23, 23, 1);
+  --color-grey: rgba(45, 45, 46, 1);
+  --color-softgrey: rgb(217, 217, 217, 1);
+  --color-lightgrey: rgba(111, 111, 113, 1);
+  --color-purewhite: rgb(255, 255, 255, 255, 1);
+  --color-white: rgb(255, 255, 255, 1);
+  --color-orange: rgba(231, 83, 23, 1);
+  ;
+}
+
+$color-black: var(--color-black);
+$color-grey: var(--color-grey);
+$color-softgrey: var(--color-softgrey);
+$color-lightgrey: var(--color-lightgrey);
+$color-purewhite: var(--color-purewhite);
+$color-white: var(--color-white);
+$color-orange: var(--color-orange);
+
+
+
+@mixin effect-style-shadow-section-header {
+  box-shadow: 0px 4px 8px 0px rgba(23, 23, 23, 0.50); 
+}

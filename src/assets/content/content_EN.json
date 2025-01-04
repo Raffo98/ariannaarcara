@@ -1,0 +1,140 @@
+{
+  "header": {
+    "sections": [
+      {
+        "title": "azienda",
+        "subsections": [
+          {
+            "title": "chi siamo",
+            "id": "about"
+          },
+          {
+            "title": "qualità e certificazioni",
+            "id": "quality"
+          },
+          {
+            "title": "contatti",
+            "id": "contacts"
+          }
+        ]
+      },
+      {
+        "title": "servizi",
+        "subsections": [
+          {
+            "title": "impianti",
+            "id": "plants"
+          },
+          {
+            "title": "laboratorio",
+            "id": "lab"
+          }
+        ]
+      },
+      {
+        "title": "news",
+        "subsections": []
+      }
+    ],
+    "button": {
+      "text": "richiedi informazioni",
+      "icon": "arrow-right"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "trattamenti termici<br>for the la metalmecanig.",
+      "cta": "scopri di più"
+    },
+    "services": {
+      "title": "i nostri servizi principali",
+      "service": [
+        {
+          "title": "carbonitrurazione",
+          "subtitle": "da 0,02mm a 0,30 mm di profondità"
+        },
+        {
+          "title": "brunitura",
+          "subtitle": "brunitura protettiva"
+        },
+        {
+          "title": "bonifica",
+          "subtitle": "8,8 - 9,8 -10,9 -12,9 su acciai basso, medio e altro legati"
+        },
+        {
+          "title": "trattamenti speciali",
+          "subtitle": "con ricette personalizzate"
+        }
+      ]
+    },
+    "contact": {
+      "title": "cerchi un partner affidabile per trattamenti termici di qualità?",
+      "button": {
+        "text": "contattaci",
+        "icon": "arrow-right"
+      }
+    }
+  },
+  "contacts": {
+    "title": "contacts",
+    "text": "La volontà dell’Organizzazione è divenire interlocutore principale dei propri clienti in merito alla gestione di tutte le problematiche relative ai trattamenti termici, mirando a soddisfarne tutte le esigenze e garantendo un servizio di elevata qualità, in tempi brevi e nel rispetto dei requisiti applicabili.",
+    "info": {
+      "title": "dove trovarci",
+      "details": [
+        {"title": "sede operativa", "content": "Via Giancarlo Puecher, 5<br>Paderno Dugnano (MI) Italia"},
+        {"title": "sede legale", "content": "via Dell'Industria, 12<br>20032 Cormano (MI) Italia"},
+        {"title": "telefono", "content": "+39 02 123456"},
+        {"title": "mail", "content": "info@efestotrattamenti.com"}
+      ]
+    }
+  },
+  "footer": {
+    "info": {
+      "title": "vuoi più informazioni?",
+      "subsections": [
+        "info@efestotrattamenti.com",
+        "+39 335 275978"
+      ]
+    },
+    "sections": [
+      {
+        "title": "azienda",
+        "subsections": [
+          "chi siamo",
+          "qualità e certificazioni",
+          "contatti"
+        ]
+      },
+      {
+        "title": "servizi",
+        "subsections": [
+          "impianti",
+          "laboratorio"
+        ]
+      },
+      {
+        "title": "news",
+        "subsections": [
+          "categoria 1",
+          "categoria 2",
+          "categoria 3"
+        ]
+      }
+    ],
+    "social": {
+      "title": "follow su",
+      "subsections": [
+        "linkedin",
+        "youtube",
+        "facebook",
+        "instagram"
+      ]
+    },
+    "details": {
+      "title": "details",
+      "subsections": [
+        "Efesto SRL P.IVA: 10125490960"
+      ]
+    }
+  }
+}

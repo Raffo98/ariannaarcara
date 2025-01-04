@@ -1,0 +1,81 @@
+{
+  "name": "efesto",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "gh-pages-deploy": "node scripts/gh-pages-deploy.js",
+    "build-staging": "vue-cli-service build --mode staging",
+    "build-staging-all": "npm run build-staging-it && npm run build-staging-en",
+    "build-staging-en": "vue-cli-service build --mode staging-en",
+    "build-staging-it": "vue-cli-service build --mode staging-it",
+    "generate-icons": "node generate-icons.js",
+    "prerender-production": "export VUE_APP_RENDER=prerender && vue-cli-service build --mode production && cd prerendering-node && node script.js production",
+    "prerender-staging": "export VUE_APP_RENDER=prerender && vue-cli-service build --mode staging && cd prerendering-node && node script.js staging",
+    "serve-en": "export VUE_APP_LANG=en && vue-cli-service serve",
+    "serve-it": "export VUE_APP_LANG=it && vue-cli-service serve",
+    "zip": "rm -rf export-* && zip -r export-$(date '+%Y.%m.%d-%H.%M.%S').zip dist/",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "@fawmi/vue-google-maps": "^0.9.79",
+    "@vueuse/components": "^9.12.0",
+    "@vueuse/core": "^10.6.1",
+    "@yzfe/svgicon": "^1.1.0",
+    "@yzfe/vue3-svgicon": "^1.0.1",
+    "airtable": "^0.12.2",
+    "axios": "^1.6.5",
+    "connect-history-api-fallback": "^2.0.0",
+    "core-js": "^3.6.5",
+    "pinia": "^2.0.29",
+    "vue": "3.4.21",
+    "vue-i18n": "^9.1.10",
+    "vue-loader": "17.4.2",
+    "vue-router": "^4.0.13",
+    "vue3-carousel": "^0.3.1",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.18.2",
+    "@intlify/vue-i18n-loader": "^5.0.0",
+    "@vue/cli-plugin-babel": "~5.0.5",
+    "@vue/cli-plugin-eslint": "^5.0.5",
+    "@vue/cli-service": "5.0.8",
+    "@vue/compiler-sfc": "3.4.21",
+    "@yzfe/svgicon-loader": "^1.1.0",
+    "@yzfe/vue-cli-plugin-svgicon": "~1.1.0",
+    "babel-plugin-lodash": "^3.3.4",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^9.21.1",
+    "execa": "^5.1.1",
+    "gh-pages": "^6.1.1",
+    "prerender-spa-plugin-next": "^4.2.0",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.52.3",
+    "sass-loader": "^13.0.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {
+      "vue/multi-word-component-names": "off"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
