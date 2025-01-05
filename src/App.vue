@@ -4,7 +4,7 @@
     <div class="breadcrumbs">
     </div>
     <div class="container" v-if="dataReady">
-      <router-view :content="$tm(`${path}`)" :data="currentProductDb"></router-view>
+      <router-view :content="$tm(`${path}`)" :data="i18n.locale.value === 'en' ? productDb.filter(product => product.lang === 'eng') : productDb.filter(product => product.lang === 'ita')"></router-view>
       <!-- <router-view :content="content" :preview="path == 'home' ? newsPreview : null"></router-view> -->
       <!-- <router-view :content="$tm('home')"></router-view> -->
     </div>
