@@ -22,19 +22,26 @@
 <style lang="scss" scoped>
 .box {
     width: calc((100% - 5rem) / 3);
-    box-sizing: border-box;    
+    box-sizing: border-box;
 
     &__wrapper {
         height: 50vh;
         display: flex;
         align-items: center;
+        background-color: $color-white;
+        transition: all .2s ease;
+
+        &:hover {
+            background-color: $color-softgrey;
+        }
+
         img {
             width: 100%;
             /* L'immagine si adatta alla larghezza del box */
             height: auto;
             /* Mantiene le proporzioni */
             object-fit: contain;
-        padding: 0.5rem 0.5rem 0.5rem 0.5rem !important;
+            padding: 0.5rem 0.5rem 0.5rem 0.5rem !important;
 
         }
     }

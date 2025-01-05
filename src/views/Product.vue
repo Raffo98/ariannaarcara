@@ -9,7 +9,7 @@
             <div class="product__info__price">€900,00 – €1.400,00</div>
             <div class="product__info__cta">
                 <button>
-                    RICHIEDI INFORMAZIONI
+                    Richiedi informazioni
                 </button>
             </div>
             <div class="product__info__details">
@@ -37,25 +37,52 @@ import Accordion from "@/components/accordion.vue";
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 1.4rem;
 
     &__info {
         width: 50%;
+
         &__productcode {
             @include details;
         }
+
         &__title {
             @include title;
+            padding-top: 1.4rem !important;
+
         }
-        &__price {}
-        &__cta {}
+
+        &__price {
+            @include text-M;
+            padding-top: 1.4rem !important;
+
+        }
+
+        &__cta {
+            color: $color-white;
+            @include text-M;
+            padding-top: 1.4rem !important;
+
+
+            button {
+                background-color: $color-black !important;
+                padding: 0.875rem 1.625rem 0.875rem 1.625rem !important;
+            }
+        }
+
+        &__details {
+            padding-top: 1.4rem !important;
+            width: 100%;
+        }
     }
+
     &__image {
         width: 50%;
+
         img {
             box-sizing: border-box;
             width: 100%;
         }
     }
 }
-
 </style>

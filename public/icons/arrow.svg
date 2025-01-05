@@ -3,10 +3,12 @@
   viewBox="0 0 24 24" 
   width="24" 
   height="24" 
-  class="accordion__arrow"
+  style="display: block; margin-left: 0;"
 >
-  <polygon 
-    points="8,6 16,12 8,18" 
-    fill="black" 
-  />
+  <g transform="translate(6, 0)">
+    <polygon 
+      points="0,6 8,12 0,18" 
+      fill="black" 
+    />
+  </g>
 </svg>

@@ -5,22 +5,22 @@
 
 @font-face {
   font-family: 'sf';
-  src: url("~@/assets/fonts/SFProDisplay-Regular.woff");
+  src: url("~@/assets/fonts/SF-Pro-Text-Medium.otf");
 }
 
 @font-face {
   font-family: 'sfbd';
-  src: url("~@/assets/fonts/SFProDisplay-Bold.woff");
+  src: url("~@/assets/fonts/SF-Pro-Text-Bold.otf");
 }
 
 @font-face {
   font-family: 'sfsemibd';
-  src: url("~@/assets/fonts/SFProDisplay-Semibold.woff");
+  src: url("~@/assets/fonts/SF-Pro-Text-Semibold.otf");
 }
 
 @font-face {
   font-family: 'sfi';
-  src: url("~@/assets/fonts/SFProDisplay-Regular.woff");
+  src: url("~@/assets/fonts/SF-Pro-Text-Regular.otf");
 }
 
 
@@ -40,6 +40,7 @@
   font-size: 1rem;
   font-style: normal;
   line-height: 100%;
+  letter-spacing: -.5px;
 }
 
 @mixin header {
@@ -47,7 +48,8 @@
   font-size: 1rem;
   font-style: normal;
   line-height: 100%;
-  font-weight: 600;
+  letter-spacing: -.5px;
+
 
 }
 
@@ -56,35 +58,51 @@
   font-size: clamp(17.905px, 1.119rem + ((1vw - 3.2px) * 1.147), 28px);
   font-style: italic;
   line-height: 1.5;
-  font-weight: 850;
+  letter-spacing: -.5px;
+
+}
+
+@mixin text-M {
+  font-family: 'sf';
+  font-size: clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.227), 1.125rem);
+  font-style: normal;
+  letter-spacing: -.5px;
+
 }
 
 @mixin text-S {
   font-family: 'sf';
   font-size: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.455), 18px);
   font-style: normal;
-  font-weight: 600;
+  letter-spacing: -.5px;
+
 }
 
 @mixin text-SS {
   font-family: 'sf';
   font-size: clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.227), 1rem);
   font-style: normal;
-  font-weight: 600;
+  letter-spacing: -.5px;
+
 }
 
 @mixin details {
   font-family: 'sf';
   font-size: 0.875rem;
   font-style: normal;
-  font-weight: 600;
+  letter-spacing: -.5px;
+
 }
 
 @mixin title {
   font-family: 'sfsemibd';
   font-size: clamp(18.959px, 1.185rem + ((1vw - 3.2px) * 1.255), 30px);
   font-style: normal;
+  letter-spacing: -.5px;
+
 }
+
+
 
 
 
@@ -213,7 +231,7 @@
 * {
   --color-black: rgba(23, 23, 23, 1);
   --color-grey: rgba(45, 45, 46, 1);
-  --color-softgrey: rgb(217, 217, 217, 1);
+  --color-softgrey: rgb(242, 242, 242);
   --color-lightgrey: rgba(111, 111, 113, 1);
   --color-purewhite: rgb(255, 255, 255, 255, 1);
   --color-white: rgb(255, 255, 255, 1);
