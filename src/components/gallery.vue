@@ -1,21 +1,7 @@
 <template>
     <div class="gallery">
         <div class="gallery__wrapper">
-            <GalleryBox />
-            <GalleryBox />
-            <GalleryBox />
-            <GalleryBox />
-            <GalleryBox />
-            <GalleryBox />
-            <GalleryBox />
-            <GalleryBox />
-            <GalleryBox />
-            <GalleryBox />
-            <GalleryBox />
-            <GalleryBox />
-            <GalleryBox />
-            <GalleryBox />
-
+            <GalleryBox v-for="(product, idx) in props.data" :key="idx" :product="product" />
         </div>
     </div>
 </template>
@@ -24,9 +10,9 @@
 import GalleryBox from "@/components/galleryBox.vue";
 
 
-// const props = defineProps({
-//     content: Object,
-// });
+const props = defineProps({
+    data: Array,
+});
 
 </script>
 

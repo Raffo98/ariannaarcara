@@ -1,10 +1,11 @@
 <template>
     <div class="box">
         <div class="box__wrapper">
-            <img :src="`${$assetsBasePath}/gallery/1.jpg`">
+            <!-- {{ props.product.img }} -->
+            <img :src="props.product.img">
         </div>
         <div class="box__title">
-            <p>Senza titolo dalla serie “Altra versione dello stesso paesaggio”</p>
+            <p v-html="props.product.title"></p>
         </div>
 
     </div>
@@ -12,10 +13,9 @@
 
 <script setup>
 
-
-// const props = defineProps({
-//     content: Object,
-// });
+const props = defineProps({
+    product: Object,
+});
 
 </script>
 
@@ -50,6 +50,8 @@
         @include text-SS;
         box-sizing: border-box;
         text-align: center;
+        padding-top: 2rem !important;
+
 
     }
 }

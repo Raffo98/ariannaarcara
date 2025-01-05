@@ -4,7 +4,7 @@
     <div class="breadcrumbs">
     </div>
     <div class="container" v-if="dataReady">
-      <router-view :content="$tm(`${path}`)"></router-view>
+      <router-view :content="$tm(`${path}`)" :data="currentProductDb"></router-view>
       <!-- <router-view :content="content" :preview="path == 'home' ? newsPreview : null"></router-view> -->
       <!-- <router-view :content="$tm('home')"></router-view> -->
     </div>
@@ -31,6 +31,10 @@ const i18n = useI18n();
 const route = useRoute();
 const router = useRouter();
 
+console.log(i18n.locale.value);
+
+
+
 //breadcrumbs
 const pathList = ref([]);
 
@@ -40,7 +44,7 @@ function updateBreadcrumbs(path) {
 }
 
 const path = computed(() => {
-  if(!pathList.value.includes(route.name)) {
+  if (!pathList.value.includes(route.name)) {
     updateBreadcrumbs(route.name);
   }
   else {
@@ -69,24 +73,57 @@ const isMobile = ref('');
 setLanguage();
 
 const newsDb = ref([]);
+const productDb = ref([]);
 
 
 
 const tagsList = ref([]);
 const content = ref({});
 
-const fetchNewsData = async () => {
+// const fetchNewsData = async () => {
+//   return new Promise((resolve, reject) => {
+//     airtable.base('news').select({}).eachPage(
+//       (records, fetchNextPage) => {
+//         records.forEach(async (record) => {
+//           newsDb.value.unshift({
+//             id: record.fields.id,
+//             title: record.fields.title,
+//             text: record.fields.text,
+//             tag: record.fields.tag,
+//             date: record.fields.date,
+//             img: record.fields.img[0].url
+//           });
+//         });
+//         fetchNextPage();
+//       },
+//       (err) => {
+//         if (err) {
+//           console.error(err);
+//           reject(err);
+//         } 
+//         else {
+//           newsDb.value = newsDb.value.sort((a, b) => new Date(b.date) - new Date(a.date));
+//           // console.log("NEWSDB ", newsDb.value);
+//           resolve(newsDb.value);
+//         }
+//       }
+//     );
+//   });
+// };
+
+const fetchProductData = async () => {
   return new Promise((resolve, reject) => {
-    airtable.base('news').select({}).eachPage(
+    airtable.base('productbase').select({}).eachPage(
       (records, fetchNextPage) => {
         records.forEach(async (record) => {
-          newsDb.value.unshift({
-            id: record.fields.id,
+          productDb.value.unshift({
+            id: record.id,
             title: record.fields.title,
-            text: record.fields.text,
-            tag: record.fields.tag,
-            date: record.fields.date,
-            img: record.fields.img[0].url
+            category: record.fields.category,
+            code: record.fields.code,
+            lang: record.fields.lang,
+            img: record.fields.image?.[0]?.url || '', // Usa optional chaining
+            gallery: record.fields.gallery || [] // Default a un array vuoto
           });
         });
         fetchNextPage();
@@ -95,35 +132,66 @@ const fetchNewsData = async () => {
         if (err) {
           console.error(err);
           reject(err);
-        } else {
-          newsDb.value = newsDb.value.sort((a, b) => new Date(b.date) - new Date(a.date));
-          // console.log("NEWSDB ", newsDb.value);
-          resolve(newsDb.value);
+        }
+        else {
+          // newsDb.value = newsDb.value.sort((a, b) => new Date(b.date) - new Date(a.date));
+          // // console.log("NEWSDB ", newsDb.value);
+          // resolve(newsDb.value);
+          completeMissingData();
         }
       }
     );
   });
 };
 
-//NEWS SECTION
+//PRODUCTS SECTION
+// Funzione per completare i dati mancanti
+const completeMissingData = () => {
+  // Raggruppa i prodotti per lingua
+  const productsIta = productDb.value.filter(product => product.lang === 'ita');
+  const productsEng = productDb.value.filter(product => product.lang === 'eng');
+
+  // Mappa di prodotti in italiano per codice
+  const itaMap = new Map(productsIta.map(product => [product.code, product]));
+
+  // Loop sugli elementi in inglese e copia i dati mancanti
+  productsEng.forEach(engProduct => {
+    const itaProduct = itaMap.get(engProduct.code);
+
+    if (itaProduct) {
+      // Se `image` è mancante o vuoto, copia quello italiano
+      if (!engProduct.img || engProduct.img === '') {
+        engProduct.img = itaProduct.img;
+      }
+
+      // Se `gallery` è mancante o vuoto, copia quello italiano
+      if (!engProduct.gallery || engProduct.gallery.length === 0) {
+        engProduct.gallery = itaProduct.gallery;
+      }
+    }
+  });
+
+  console.log("Database aggiornato:", productDb.value);
+};
+
+
 const fetchData = async () => {
   try {
-    await fetchNewsData();
-    //create a list of all tags in news articles from db
-    newsDb.value.forEach(news => {
-      news.tag.map(tag => {
-        if (!tagsList.value.includes(tag)) {
-          tagsList.value.push(tag);
-        }
-      })
-    })
+    // await fetchNewsData();
+    fetchProductData();
 
-    //news preview for homepage
-    // const sortNews = newsDb.value.sort((a, b) => new Date(b.date) - new Date(a.date));
-    // newsPreview.value = { latest: sortNews[0], recent: sortNews.slice(1, 4) };
-    // console.log("AOOOO:", newsPreview.value)
- 
+    //create a list of all tags in news articles from db
+    // newsDb.value.forEach(news => {
+    //   news.tag.map(tag => {
+    //     if (!tagsList.value.includes(tag)) {
+    //       tagsList.value.push(tag);
+    //     }
+    //   })
+    // })
+    
+
     dataReady.value = true;
+
 
   } catch (error) {
     console.error(error);
@@ -177,7 +245,11 @@ watch($tvaMq, () => {
   else {
     isMobile.value = '';
   }
-});
+
+}, i18n.locale.value, () => {
+  console.log(i18n.locale.value);
+}
+);
 
 // watch(propsNews, (test) => {
 //   console.log(test);

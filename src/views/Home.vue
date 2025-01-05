@@ -4,7 +4,7 @@
             <h2 class="home__hero__text" v-html="props.content.hero.title"></h2>
             <a href=""><div class="home__hero__readmore" v-html="props.content.hero.cta"></div></a>
         </div>
-        <Gallery />
+        <Gallery :data="data" />
     </div>
 </template>
 
@@ -19,7 +19,8 @@ const { $tvaMq } = useTvaMq();
 provide("$tvaMq", $tvaMq);
 
 const props = defineProps({
-    content: Object
+    content: Object,
+    data: Array
 });
 
 // const isScrolling = useStateStore();
