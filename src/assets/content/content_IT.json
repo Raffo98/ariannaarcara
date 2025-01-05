@@ -35,7 +35,7 @@
   },
   "product": {
     "info": {
-      "productcode": "Codice prodotto: ",
+      "code": "Codice prodotto: ",
       "cta": "Richiedi informazioni",
       "accordion": ["Specifiche", "Descrizione", "Mostre", "Info sulla spedizione"]
     }

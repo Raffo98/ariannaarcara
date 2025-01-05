@@ -30,6 +30,7 @@ import Product from "@/views/Product.vue";
 
 
 
+
 const routes = [
   // {
   //   path: '/',
@@ -42,7 +43,7 @@ const routes = [
     alias: ''
   },
   {
-    path: "/product",
+    path: "/product/:id",
     name: "product",
     component: Product
 

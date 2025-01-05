@@ -2,15 +2,12 @@
     <div class="product">
         <div class="product__info">
             <div class="product__info__productcode">
-                Codice prodotto: P017
+                {{ props.content.info.code }} {{ product[0].code }}
             </div>
-            <div class="product__info__title">Senza titolo dalla serie
-                “Altra versione dello stesso paesaggio”</div>
+            <div class="product__info__title" v-html="product[0].title"></div>
             <div class="product__info__price">€900,00 – €1.400,00</div>
             <div class="product__info__cta">
-                <button>
-                    Richiedi informazioni
-                </button>
+                <button v-html="props.content.info.cta"></button>
             </div>
             <div class="product__info__details">
                 <Accordion />
@@ -19,12 +16,24 @@
                 <Accordion />
             </div>
         </div>
-        <div class="product__image"><img :src="`${$assetsBasePath}/gallery/1.jpg`"></div>
+        <div class="product__image"><img :src="product[0].img"></div>
     </div>
 </template>
 
 <script setup>
 import Accordion from "@/components/accordion.vue";
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+console.log(route.params.id)
+
+const props = defineProps({
+    content: Object,
+    data: Object
+});
+
+const product = props.data.filter(item => item.code === route.params.id);
+console.log(product)
 
 
 

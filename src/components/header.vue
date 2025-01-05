@@ -187,7 +187,7 @@ watch(route, () => {
 
         &__lang {
           @include header;
-          color: $color-white;
+          color: $color-black;
 
           button {
             text-transform: uppercase;

@@ -1,12 +1,14 @@
 <template>
     <div class="box">
-        <div class="box__wrapper">
-            <!-- {{ props.product.img }} -->
-            <img :src="props.product.img">
-        </div>
-        <div class="box__title">
-            <p v-html="props.product.title"></p>
-        </div>
+        <router-link :to="{ name: 'product', params: { id: `${props.product.code}` } }">
+            <div class="box__wrapper">
+                <!-- {{ props.product.img }} -->
+                <img :src="props.product.img">
+            </div>
+            <div class="box__title">
+                <p v-html="props.product.title"></p>
+            </div>
+        </router-link>
 
     </div>
 </template>
@@ -25,7 +27,7 @@ const props = defineProps({
     box-sizing: border-box;
 
     &__wrapper {
-        height: 50vh;
+        height: 75vh;
         display: flex;
         align-items: center;
         background-color: $color-white;
