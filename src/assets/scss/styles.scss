@@ -53,13 +53,20 @@
 
 }
 
+@mixin hero-normal {
+  font-family: 'sf';
+  font-size: clamp(17.905px, 1.119rem + ((1vw - 3.2px) * 1.147), 28px);
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: -.5px;
+}
+
 @mixin hero {
   font-family: 'sfi';
   font-size: clamp(17.905px, 1.119rem + ((1vw - 3.2px) * 1.147), 28px);
   font-style: italic;
   line-height: 1.5;
   letter-spacing: -.5px;
-
 }
 
 @mixin text-M {

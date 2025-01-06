@@ -16,7 +16,8 @@
                 <Accordion />
             </div>
         </div>
-        <div class="product__image"><img :src="product[0].img"></div>
+        <div class="product__gallery" v-if="product[0].gallery.length > 0">AOOOOO</div>
+        <div class="product__image" v-else><img :src="product[0].img"></div>
     </div>
 </template>
 
@@ -25,7 +26,6 @@ import Accordion from "@/components/accordion.vue";
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-console.log(route.params.id)
 
 const props = defineProps({
     content: Object,
@@ -33,8 +33,8 @@ const props = defineProps({
 });
 
 const product = props.data.filter(item => item.code === route.params.id);
-console.log(product)
 
+console.log(product)
 
 
 </script>

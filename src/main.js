@@ -26,6 +26,8 @@ import News from "@/views/News.vue";
 import NewsId from "@/views/NewsId.vue";
 import Lab from "@/views/Lab.vue";
 import Product from "@/views/Product.vue";
+import Gallery from "@/views/Gallery.vue";
+import CV from "@/views/cv.vue";
 
 
 
@@ -46,6 +48,18 @@ const routes = [
     path: "/product/:id",
     name: "product",
     component: Product
+
+  },
+  {
+    path: "/gallery/:filter",
+    name: "gallery",
+    component: Gallery
+
+  },
+  {
+    path: "/cv",
+    name: "cv",
+    component: CV
 
   },
   {

@@ -1,6 +1,10 @@
 <template>
   <div class="sectionHeader">
-    <router-link :to="{ name: `${idSection == 'news' ? idSection : ''}` }">
+    <router-link :to="props.content.id === 'cv'
+      ? { name: 'cv' }
+      : props.content.id === 'about'
+        ? { name: 'about' }
+        : { name: 'gallery', params: { filter: props.content.id } }">
       <button class="sectionHeader__text" @mouseover="
         isHover = true;
       dropdown();
@@ -86,18 +90,18 @@ function dropdown() {
     }
   }
 
-.underline {
-  position: absolute;
-  bottom: -1px;
-  width: 0;
-  height: 2px;
-  background-color: $color-black;
-  transition: width 0.3s ease, left 0.3s ease;
-}
+  .underline {
+    position: absolute;
+    bottom: -1px;
+    width: 0;
+    height: 2px;
+    background-color: $color-black;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
 
-.animate_underline {
-  width: 100%;
-}
+  .animate_underline {
+    width: 100%;
+  }
 
 
 }

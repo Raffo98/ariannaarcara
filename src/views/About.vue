@@ -58,7 +58,6 @@ const props = defineProps({
 //   }
 // }
 // ).then(function (response) {
-//   console.log(response.data.records);
 //   teamDb.value = response.data.records;
 
 // }).catch(function (error) {
@@ -74,7 +73,6 @@ const props = defineProps({
 //  fetchNextPage();
 // })
 
-// console.log(teamDb.value);
 const teamDb = ref([]);
 
 const fetchTeamData = () => {

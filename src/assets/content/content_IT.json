@@ -2,22 +2,28 @@
   "header": {
     "sections": [
       {
-        "title": "Fine Art Prints"
+        "title": "Fine Art Prints",
+        "id": "fineartprints"
       },
       {
-        "title": "Darkroom Prints"
+        "title": "Darkroom Prints",
+        "id": "darkroomprints"
       },
       {
-        "title": "Limited editions"
+        "title": "Limited editions",
+        "id": "limitededitions"
       },
       {
-        "title": "Books"
+        "title": "Books",
+        "id": "books"
       },
       {
-        "title": "CV"
+        "title": "CV",
+        "id": "cv"
       },
       {
-        "title": "About"
+        "title": "About",
+        "id": "about"
       }
     ]
   },

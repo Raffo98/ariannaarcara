@@ -81,7 +81,6 @@ watch(stateSection, () => {
 // }
 
 // function setIdPage(id) {
-//   console.log(id.id);
 //   stateSection.updatePage(id.id);
 // }
 

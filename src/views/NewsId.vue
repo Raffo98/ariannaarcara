@@ -37,7 +37,6 @@ const props = defineProps({
 
 //props via router-link
 // const content = JSON.parse(route.query.content);
-// console.log(content);
 
 
 </script>

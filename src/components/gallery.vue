@@ -1,17 +1,27 @@
 <template>
     <div class="gallery">
         <div class="gallery__wrapper">
-            <GalleryBox v-for="(product, idx) in props.data" :key="idx" :product="product" />
+            <GalleryBox v-for="(product, idx) in filteredData" :key="idx" :product="product" />
         </div>
     </div>
 </template>
 
 <script setup>
+import { computed } from "vue";
 import GalleryBox from "@/components/galleryBox.vue";
 
-
 const props = defineProps({
-    data: Array,
+  data: Array,
+  filter: String,
+});
+
+
+// Computed property per filtrare i dati
+const filteredData = computed(() => {
+  if (props.filter) {
+    return props.data.filter(product => product.category === props.filter);
+  }
+  return props.data; // Restituisce tutti i dati se il filtro non esiste
 });
 
 </script>

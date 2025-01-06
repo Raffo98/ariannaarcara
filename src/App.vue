@@ -4,7 +4,7 @@
     <div class="breadcrumbs">
     </div>
     <div class="container" v-if="dataReady">
-      <router-view :content="$tm(`${path}`)" :data="i18n.locale.value === 'en' ? productDb.filter(product => product.lang === 'eng') : productDb.filter(product => product.lang === 'ita')"></router-view>
+      <router-view :content="$tm(`${path}`)" :data="i18n.locale.value === 'en' ? productDb.filter(product => product.lang === 'eng') : productDb.filter(product => product.lang === 'ita')" :sections="$tm('header')"></router-view>
       <!-- <router-view :content="content" :preview="path == 'home' ? newsPreview : null"></router-view> -->
       <!-- <router-view :content="$tm('home')"></router-view> -->
     </div>
@@ -19,7 +19,7 @@ import useTvaMq from "./plugins/tvaMq.js";
 import { useI18n } from "vue-i18n";
 import { useStateStore } from "@/utilities/store/store";
 import { onClickOutside } from '@vueuse/core';
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import airtable from "@/plugins/airtable.js";
 
@@ -29,10 +29,6 @@ import Footer from "@/components/footer.vue";
 const { $tvaMq } = useTvaMq();
 const i18n = useI18n();
 const route = useRoute();
-const router = useRouter();
-
-console.log(i18n.locale.value);
-
 
 
 //breadcrumbs
@@ -50,8 +46,6 @@ const path = computed(() => {
   else {
     pathList.value.slice(0, pathList.value.indexOf(route.name))
   }
-  console.log(route.fullPath, router)
-  console.log(pathList.value)
   return route.name;
 })
 
@@ -103,7 +97,6 @@ const content = ref({});
 //         } 
 //         else {
 //           newsDb.value = newsDb.value.sort((a, b) => new Date(b.date) - new Date(a.date));
-//           // console.log("NEWSDB ", newsDb.value);
 //           resolve(newsDb.value);
 //         }
 //       }
@@ -135,7 +128,6 @@ const fetchProductData = async () => {
         }
         else {
           // newsDb.value = newsDb.value.sort((a, b) => new Date(b.date) - new Date(a.date));
-          // // console.log("NEWSDB ", newsDb.value);
           // resolve(newsDb.value);
           completeMissingData();
         }
@@ -218,10 +210,8 @@ onMounted(() => {
 
 watchEffect(() => {
   // Aggiorna content solo quando newsDb.value è definito
-  // console.log("NEWSDB in WATCH ", newsDb.value);
 
   if (dataReady.value || 1 == 1) {
-    // console.log("route: :", route, "name: ", route.name);
 
     if (path.value === 'news') {
       content.value = { static: i18n.tm(path.value), dinamic: newsDb.value, tags: tagsList.value };
@@ -231,9 +221,7 @@ watchEffect(() => {
       content.value = { dinamic: newsId[0] }
     }
     else {
-      // console.log("WATCH 1: ", content.value, "i18n: ", i18n.tm(path.value), "path: ", path.value);
       content.value = i18n.tm(path.value);
-      // console.log("WATCH 2: ", content.value, "i18n: ", i18n.tm(path.value), "path: ", path.value);
 
     }
   }
@@ -246,15 +234,8 @@ watch($tvaMq, () => {
     isMobile.value = '';
   }
 
-}, i18n.locale.value, () => {
-  console.log(i18n.locale.value);
 }
 );
-
-// watch(propsNews, (test) => {
-//   console.log(test);
-// });
-
 
 onClickOutside(modal, () => { if (stateModal.isOpen) { stateModal.changeState(false) } });
 

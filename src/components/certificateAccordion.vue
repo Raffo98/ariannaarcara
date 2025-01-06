@@ -54,7 +54,6 @@ const toggleAccordion = () => {
 };
 
 const openLink = (link) => {
-    console.log(link)
     window.open(link.url, "_blank");
 }
 

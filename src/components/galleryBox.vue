@@ -23,6 +23,7 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .box {
+    cursor: pointer !important;
     width: calc((100% - 5rem) / 3);
     box-sizing: border-box;
 
