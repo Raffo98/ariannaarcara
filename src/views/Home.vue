@@ -2,7 +2,9 @@
     <div class="home">
         <div class="home__hero">
             <h2 class="home__hero__text" v-html="props.content.hero.title"></h2>
-            <a href=""><div class="home__hero__readmore" v-html="props.content.hero.cta"></div></a>
+            <router-link :to="{ name: 'cv' }">
+                <div class="home__hero__readmore" v-html="props.content.hero.cta"></div>
+            </router-link>
         </div>
         <Gallery :data="data" />
     </div>
@@ -63,16 +65,17 @@ const props = defineProps({
         padding-top: 2rem !important;
         padding-bottom: 2rem !important;
 
-        
+
         &__text {
             @include hero;
             padding-bottom: 2rem !important;
 
         }
+
         &__readmore {
             @include text-S;
             text-decoration: underline;
-            
+
         }
     }
 }

@@ -18,7 +18,8 @@
 import { ref } from 'vue';
 
 // const props = defineProps({
-//     content: Object,
+//     details: Object,
+//     titles: Array
 // });
 
 const isOpen = ref(false);

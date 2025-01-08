@@ -116,8 +116,21 @@ const fetchProductData = async () => {
             code: record.fields.code,
             lang: record.fields.lang,
             img: record.fields.image?.[0]?.url || '', // Usa optional chaining
-            gallery: record.fields.gallery || [] // Default a un array vuoto
+            gallery: record.fields.gallery || [], // Default a un array vuoto
+            product: { 
+              price: [record.fields.max_price, record.fields.min_price],
+              accordions: [
+              { description: record.fields.description },
+              { details: record.fields.details },
+              { exhibitions: record.fields.exhibitions },
+              { info: record.fields.info } 
+              ]
+
+             }
+
           });
+        console.log(record.fields)
+
         });
         fetchNextPage();
       },
