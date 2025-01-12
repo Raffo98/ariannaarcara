@@ -4,7 +4,9 @@
     <div class="breadcrumbs">
     </div>
     <div class="container" v-if="dataReady">
-      <router-view :content="$tm(`${path}`)" :data="i18n.locale.value === 'en' ? productDb.filter(product => product.lang === 'eng') : productDb.filter(product => product.lang === 'ita')" :sections="$tm('header')"></router-view>
+      <router-view :content="$tm(`${path}`)" :data="productDb.filter(product => product.lang == i18n.locale.value)"
+        :sections="$tm('header')"></router-view>
+      <!-- <router-view :content="$tm(`${path}`)" :data="i18n.locale.value === 'en' ? productDb.filter(product => product.lang === 'eng') : productDb.filter(product => product.lang === 'ita')" :sections="$tm('header')"></router-view> -->
       <!-- <router-view :content="content" :preview="path == 'home' ? newsPreview : null"></router-view> -->
       <!-- <router-view :content="$tm('home')"></router-view> -->
     </div>
@@ -30,13 +32,11 @@ const { $tvaMq } = useTvaMq();
 const i18n = useI18n();
 const route = useRoute();
 
-
 //breadcrumbs
 const pathList = ref([]);
 
 function updateBreadcrumbs(path) {
   pathList.value.push(path);
-
 }
 
 const path = computed(() => {
@@ -68,6 +68,9 @@ setLanguage();
 
 const newsDb = ref([]);
 const productDb = ref([]);
+
+i18n.locale.value === 'en' ? productDb.value.filter(product => product.lang === 'eng') : productDb.value.filter(product => product.lang === 'ita')
+
 
 
 
@@ -117,19 +120,18 @@ const fetchProductData = async () => {
             lang: record.fields.lang,
             img: record.fields.image?.[0]?.url || '', // Usa optional chaining
             gallery: record.fields.gallery || [], // Default a un array vuoto
-            product: { 
+            product: {
               price: [record.fields.max_price, record.fields.min_price],
               accordions: [
-              { description: record.fields.description },
-              { details: record.fields.details },
-              { exhibitions: record.fields.exhibitions },
-              { info: record.fields.info } 
+                { description: record.fields.description },
+                { details: record.fields.details },
+                { exhibitions: record.fields.exhibitions },
+                { info: record.fields.info }
               ]
 
-             }
+            }
 
           });
-        console.log(record.fields)
 
         });
         fetchNextPage();
@@ -140,9 +142,8 @@ const fetchProductData = async () => {
           reject(err);
         }
         else {
-          // newsDb.value = newsDb.value.sort((a, b) => new Date(b.date) - new Date(a.date));
-          // resolve(newsDb.value);
-          completeMissingData();
+
+          resolve(completeMissingData());
         }
       }
     );
@@ -182,22 +183,8 @@ const completeMissingData = () => {
 
 const fetchData = async () => {
   try {
-    // await fetchNewsData();
-    fetchProductData();
-
-    //create a list of all tags in news articles from db
-    // newsDb.value.forEach(news => {
-    //   news.tag.map(tag => {
-    //     if (!tagsList.value.includes(tag)) {
-    //       tagsList.value.push(tag);
-    //     }
-    //   })
-    // })
-    
-
+    await fetchProductData();
     dataReady.value = true;
-
-
   } catch (error) {
     console.error(error);
   }
@@ -222,7 +209,7 @@ onMounted(() => {
 
 
 watchEffect(() => {
-  // Aggiorna content solo quando newsDb.value è definito
+  // Aggiorna content solo quando productDb.value è definito
 
   if (dataReady.value || 1 == 1) {
 
@@ -285,6 +272,8 @@ function setVHProperty() {
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   }
 }
+
+
 </script>
 
 <style lang="scss">

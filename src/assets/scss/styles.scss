@@ -93,6 +93,14 @@
 
 }
 
+@mixin text-SSS {
+  font-family: 'sf';
+  font-size: .8rem;
+  font-style: normal;
+  letter-spacing: -.5px;
+
+}
+
 @mixin details {
   font-family: 'sf';
   font-size: 0.875rem;

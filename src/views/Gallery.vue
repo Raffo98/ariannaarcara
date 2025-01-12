@@ -21,6 +21,10 @@ const props = defineProps({
     sections: Array
 });
 
+
+
+
+
 // Trova il titolo basandoti sull'id che corrisponde a filter
 const filteredTitle = computed(() => {
   const matchingSection = props.sections.sections.find(section => section.id === filter.value);

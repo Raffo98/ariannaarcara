@@ -6,7 +6,7 @@
                 <div class="home__hero__readmore" v-html="props.content.hero.cta"></div>
             </router-link>
         </div>
-        <Gallery :data="data" />
+        <Gallery :data="props.data" />
     </div>
 </template>
 
@@ -24,6 +24,7 @@ const props = defineProps({
     content: Object,
     data: Array
 });
+
 
 // const isScrolling = useStateStore();
 // const scrollIncrement = ref(0);

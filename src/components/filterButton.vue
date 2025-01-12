@@ -1,160 +1,147 @@
 <template>
-    <div class="filter" ref="filter">
-        <div class="filter__box" @mouseover="isHover = true" @mouseleave=" isHover = false" @click="isClicked = !isClicked"
+    <div class="filter" ref="filter" v-if="minmax.min != minmax.max">
+        <!-- <div class="filter__box">
+            <div class="filter__box__labels">
+                <label for="min-price">Prezzo da</label>
+                <input id="min-price" type="number" v-model="minPrice" />
+
+                <label for="max-price">Prezzo fino a</label>
+                <input id="max-price" type="number" v-model="maxPrice" />
+            </div>
+            <div class="filter__box__slider"></div>
+        </div>
+        <div class="slider">
+            <input type="range" v-model="minPrice" :step="1" />
+            <input type="range" v-model="maxPrice" :step="1" />
+        </div> -->
+        <!-- <div class="filter__box" @mouseover="isHover = true" @mouseleave=" isHover = false" @click="isClicked = !isClicked"
             :style="[isHover ? { backgroundPosition: 'left bottom' } : { backgroundPosition: 'right bottom' }]">
             <p class="filter__box__text" v-html="props.content.text" v-if="$tvaMq == 'desktop' || $tvaMq == 'large'"></p>
             <img :src="`${$assetsBasePath}icons/news/${props.content.icon}.svg`" />
+        </div> -->
+        <!-- <div class="box">
+            <input v-model="value" @input="clearErrorMsg" />
+            <span style="color: red; margin-left: 20px;">{{ errorMsg }}</span>
+        </div> -->
+        <!-- <vue-slider v-model="value" :min="props.minmax[0]" :max="props.minmax[1]"
+            :tooltip="errorMsg ? 'none' : 'always'" :marks="[props.minmax[0], props.minmax[1]]" @error="handleError"
+            @change="clearErrorMsg" :enable-cross="false" :process="true"></vue-slider> -->
+        <div class="filter__box">
+            {{ value }}
+            {{ minmax.min }}
+            {{ minmax.max }}
+            {{ minmax.partialMin }}
+            {{ minmax.partialMax }}
+            <vue-slider v-model="value" :min="minmax.min" :max="minmax.max" :tooltip="'always'" @change="inputHandler"
+                :enable-cross="false" :process="true" :interval="10" :lazy="true"></vue-slider>
         </div>
-        <fieldset class="filter__checkbox" v-if="isClicked">
-            <div class="filter__checkbox__check" v-for="tag in props.tags" :key="tag">
-                <input type="checkbox" ref="el" :id="tag" :value="tag" v-model="checkedTags" />
-                <label :for="tag" v-html="tag"></label>
-            </div>
-        </fieldset>
     </div>
+
+
 </template>
 
 <script setup>
-import { ref, watch } from "@vue/runtime-core";
-import { onClickOutside } from '@vueuse/core';
+// import { ref } from 'vue';
+import VueSlider from 'vue-slider-component';
+import 'vue-slider-component/theme/default.css';
+import { useStateStore } from "@/utilities/store/store";
+import { watch, ref } from "@vue/runtime-core";
 
-const props = defineProps({
-    content: Object,
-    tags: Array
+
+
+// const props = defineProps({
+//     min: Number,
+//     max: Number,
+// });
+
+
+const minmax = useStateStore();
+
+
+// if (minmax.min == 0 || minmax.max == 0) {
+//     // console.log("we",);
+//     // console.log(props.min, props.max)
+//     minmax.updateMinMax(props.min, props.max);
+//     // console.log(minmax.min)
+
+// }
+
+function inputHandler(e) {
+    // minmax.updateMinMax(props.min, props.max);
+    minmax.updatePartialMinMax(e[0], e[1]);
+}
+
+
+watch(() => minmax.min, () => {
+    value.value = [minmax.min, minmax.max];
 });
 
-const emit = defineEmits(['update-tags']);
-
-const isHover = ref(false);
-const checkedTags = ref([]);
-const isClicked = ref(false);
-const filter = ref(null);
-
-onClickOutside(filter, log => {
-    if (log) {
-        isClicked.value = false;
-    }
-
-});
 
 
-watch(checkedTags, (e) => {
-    emit('update-tags', e);
-});
+// Definizione dei tipi di errore
+// const ERROR_TYPE = {
+//     VALUE: 1,
+//     INTERVAL: 2,
+//     MIN: 3,
+//     MAX: 4,
+//     ORDER: 5,
+// };
 
+// Variabili reattive
+const value = ref([minmax.min, minmax.max]);
+// const value = minmax.minmax;
+// const errorMsg = ref('');
 
+// Metodi
+// const handleError = (type, msg) => {
+//     switch (type) {
+//         case ERROR_TYPE.MIN:
+//             // Logica per errore MIN
+//             break;
+//         case ERROR_TYPE.MAX:
+//             // Logica per errore MAX
+//             break;
+//         case ERROR_TYPE.VALUE:
+//             // Logica per errore VALUE
+//             break;
+//     }
+//     errorMsg.value = msg;
+// };
 
+// const clearErrorMsg = () => {
+//     errorMsg.value = '';
+// };
 </script>
+
+
+
+
 
 <style lang="scss" scoped>
 .filter {
-    position: relative;
-    box-sizing: border-box;
-    height: 41px;
-    width: fit-content;
-    border: 1.5px solid $color-orange !important;
-    cursor: pointer;
+    width: 10%;
+}
 
+.vue-slider-rail {
+    background-color: red;
+}
 
-    &__box {
-        display: flex;
-        flex-direction: row;
-        align-self: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to right, $color-white 50%, $color-orange 50%);
-        background-size: 200% 100%;
-        padding: 8px 16px !important;
-        transition: all 0.8s ease;
+:deep(.vue-slider-rail) {
+    height: 4px !important;
+    background-color: grey !important;
+}
 
-        &:hover {
-            p {
-                color: $color-orange;
-            }
+:deep(.vue-slider-process) {
+    height: 4px !important;
+    background-color: $color-black;
+}
 
-            img {
-                filter: invert(45%) sepia(50%) saturate(2400%) hue-rotate(360deg) brightness(81%) contrast(99%) !important;
-                transition: filter 0.5s ease;
-            }
-        }
+:deep(.vue-slider-dot-tooltip-inner) {
+    background-color: $color-black;
+    @include text-SSS;
+}
 
-        p {
-            @include paragraph-m;
-            color: $color-white;
-            transition: color 0.5s ease;
-            padding-right: 1.25rem !important;
-
-        }
-
-        img {
-            filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(133deg) brightness(1200%) contrast(90%) !important;
-        }
-    }
-
-    &__checkbox {
-        border: 1.5px solid $color-orange !important;
-        background-color: $color-white;
-        width: fit-content;
-        position: absolute;
-        right: -1.5px;
-        padding: 1rem 1.375rem !important;
-
-
-        &__check {
-            padding: 0.3rem !important;
-            display: flex;
-            align-self: center;
-
-
-
-            input[type="checkbox"] {
-                appearance: none;
-                border: 2px solid $color-lightgrey !important;
-                background-color: $color-white !important;
-                border-radius: 0.2rem;
-                width: 14px;
-                height: 14px;
-                position: relative;
-                cursor: pointer;
-                transition: border .2s ease;
-                display: flex;
-                align-self: center;
-                justify-content: center;
-                transition: background-color .2s ease;
-                place-content: center;
-
-
-                &:checked {
-                    border: 2px solid $color-orange !important;
-                    transition: border .2s ease, background-color .2s ease;
-                    background-color: $color-orange !important;
-
-
-
-
-                    &::before {
-                        transform: scale(1) !important;
-                    }
-                }
-
-                &::before {
-                    content: "";
-                    width: 14px;
-                    height: 9px;
-                    background-color: $color-white !important;
-                    clip-path: polygon(33.333% 100%, 0% 57.447%, 11.667% 42.553%, 33.333% 70.213%, 88.333% 0%, 100% 14.894%, 33.333% 100%);
-                    transform: scale(0);
-                }
-
-            }
-
-            label {
-                @include paragraph-m;
-                color: $color-orange;
-                text-wrap: nowrap;
-            }
-        }
-    }
+:deep(.vue-slider-dot-tooltip-text) {
+    padding: .2rem !important;
 }
 </style>

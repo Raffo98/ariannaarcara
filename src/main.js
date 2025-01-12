@@ -127,6 +127,7 @@ const router = createRouter({
 const app = createApp(App);
 const pinia = createPinia();
 
+
 app.use(globalVariables);
 app.use(i18n);
 app.use(pinia);
