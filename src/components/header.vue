@@ -12,22 +12,39 @@
           <div class="header__box__sections__buttons__lang">
             <button @mouseover="isHoveredIta = true" @mouseleave="isHoveredIta = false"
               @click="$emit('setLang', 'it'); isClickedLang = 'it'"
-              :style="{ color: isHoveredIta || isClickedLang == 'it' ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 1)' }"><u>ita</u></button> | <button
-              @mouseover="isHoveredEng = true" @mouseleave="isHoveredEng = false"
+              :style="{ color: isHoveredIta || isClickedLang == 'it' ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 1)' }"><u>ita</u></button>
+            | <button @mouseover="isHoveredEng = true" @mouseleave="isHoveredEng = false"
               @click="$emit('setLang', 'en'); isClickedLang = 'en'"
               :style="{ color: isHoveredEng || isClickedLang == 'en' ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 1)' }"><u>eng</u></button>
 
-            </div>
+          </div>
         </div>
       </div>
       <div class="header__box__hamburger" v-else>
         <button class="header__box__hamburger__btn" @click="dropdownMenu()">
-          <img class="header__box__hamburger__btn__icon" :src="`${$assetsBasePath}icons/mobile/hamburger.svg`">
+          <img class="header__box__hamburger__btn__icon" :src="`${$assetsBasePath}/icons/mobile/hamburger.svg`">
         </button>
-        <div class="header__box__hamburger__wrapper" :class="{ slideDown: isOpenMobile }">
-          <sectionHeaderMobile v-for="(section, idx) in props.sections" :key="idx" :content="section" />
-          <div class="header__box__hamburger__wrapper__buttons">
-            <div class="header__box__hamburger__wrapper__buttons__lang">
+        <div class="header__box__hamburger__buttons">
+          <div class="header__box__hamburger__buttons__lang">
+            <button @mouseover="isHoveredIta = true" @mouseleave="isHoveredIta = false"
+              @click="$emit('setLang', 'it'); isClickedLang = 'it'"
+              :style="{ color: isHoveredIta || isClickedLang == 'it' ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 1)' }"><u>ita</u></button>
+            | <button @mouseover="isHoveredEng = true" @mouseleave="isHoveredEng = false"
+              @click="$emit('setLang', 'en'); isClickedLang = 'en'"
+              :style="{ color: isHoveredEng || isClickedLang == 'en' ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 1)' }"><u>eng</u></button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="header__wrapper" :class="{ slideDown: isOpenMobile }">
+      <button class="header__wrapper__btn" @click="dropdownMenu()">
+        <img class="header__wrapper__btn__icon" :src="`${$assetsBasePath}/icons/mobile/close.svg`">
+      </button>
+      <sectionHeaderMobile v-for="(section, idx) in props.sections" :key="idx" :content="section" />
+      <!-- <div class="header__box__hamburger__wrapper__buttons"> -->
+      <!-- <div class="header__box__hamburger__wrapper__buttons__lang">
               <button @mouseover="isHoveredIta = true" @mouseleave="isHoveredIta = false"
                 @click="$emit('setLang', 'it'); isClickedLang = 'it'"
                 :style="{ color: isHoveredIta || isClickedLang == 'it' ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 1)' }">ita</button> | <button
@@ -35,9 +52,7 @@
                 @click="$emit('setLang', 'en'); isClickedLang = 'en'"
                 :style="{ color: isHoveredEng || isClickedLang == 'en' ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 1)' }">eng</button>
             </div>
-          </div>
-        </div>
-      </div>
+          </div> -->
     </div>
   </div>
 </template>
@@ -89,18 +104,23 @@ watch(route, () => {
 </script>
 <style lang="scss" scoped>
 .header {
-  position: fixed; /* Fissa gli elementi alla pagina */
+  position: fixed;
+  /* Fissa gli elementi alla pagina */
   left: 9rem;
   right: 9rem;
-  position: fixed;
   top: 0;
-  z-index: 1000;
+  z-index: 9998;
   width: 100%;
   background-color: $color-white;
 
+  .mobile & {
+    left: 1.8rem;
+    right: 1.8rem;
+  }
+
 
   &__box {
-    position: relative;
+    // position: relative;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -112,7 +132,7 @@ watch(route, () => {
     // padding: 0 3rem 0 3rem !important;
 
     .mobile & {
-      padding: 0 1rem 0 1rem !important;
+      width: calc(100% - 3.6rem);
 
     }
 
@@ -127,46 +147,29 @@ watch(route, () => {
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      position: relative;
 
-
-      &__wrapper {
-        position: absolute;
-        top: 79px;
-        left: 0;
-        width: 100%;
-        max-height: 0;
-        background-color: $color-white;
-        overflow: hidden;
-        transition: max-height .9s ease;
-        overflow-y: hidden;
-        white-space: nowrap;
-
-        &__buttons {
-          display: flex;
-          flex-direction: column;
-          padding: 2rem 3rem 1rem 3rem !important;
-          max-width: min-content;
-
-          .mobile & {
-            padding: 2rem 1rem 1rem 1rem !important;
-          }
-
-          &__lang {
-            @include header;
-            color: $color-black;
-            padding-right: 1.5rem !important;
-            padding-bottom: 3rem !important;
-
-
-            button {
-              text-transform: uppercase;
-
-            }
-          }
-        }
+      &__btn {
+        display: flex;
+        align-items: center;
       }
 
+      &__buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 1rem !important;
 
+        &__lang {
+          @include header;
+          color: $color-black;
+
+          button {
+            text-transform: uppercase;
+          }
+        }
+
+      }
     }
 
     &__sections {
@@ -177,7 +180,8 @@ watch(route, () => {
       align-items: center;
       justify-content: space-between;
       white-space: nowrap;
-      gap: 1rem; /* Gap fisso tra le sezioni */
+      gap: 1rem;
+      /* Gap fisso tra le sezioni */
       margin-left: auto;
 
       &__buttons {
@@ -191,7 +195,6 @@ watch(route, () => {
 
           button {
             text-transform: uppercase;
-
           }
         }
 
@@ -199,10 +202,42 @@ watch(route, () => {
 
     }
   }
+
+  &__wrapper {
+    @include text-SS;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 0; // Cambiato da 0vh a 0
+    overflow: hidden; // Assicura che il contenuto non esca dall'area visibile
+    max-height: none !important;
+    /* Rimuovi eventuali limiti */
+    margin-left: -1.8rem !important;
+    /* Elimina margini non necessari */
+    padding: 0 !important;
+    opacity: 0;
+    color: $color-white;
+    // max-height: 0;
+    background-color: black;
+    z-index: 9999;
+    transform: translateY(1rem); // Sposta il wrapper verso il basso
+    transition: transform 0.3s ease, opacity 0.2s ease;
+
+    &__btn {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 1.5rem !important;
+      padding-right: 1.5rem !important;
+    }
+  }
 }
 
 .slideDown {
-  max-height: 500px;
+  height: 100vh;
+  transform: translateY(0); // Torna alla posizione originale
+  opacity: 100;
 }
 
 .border {

@@ -66,9 +66,6 @@ const filterCheck = ref();
 watch(() => [filter.value, minmax.partialMax, minmax.partialMin], ([newFilter]) => {
     fetchData();
     filterCheck.value = newFilter;
-    console.log("porcoddio");
-
-    console.log(filterCheck.value, newFilter, "we")
 });
 
 // Variabili di stato per i dati filtrati, minPrice e maxPrice
@@ -194,7 +191,6 @@ const fetchData = async () => {
         minmax.updateMinMax(minPrice.value, maxPrice.value);
 
         if (minmax.partialMin == 0 || minmax.partialMax == 0 || filterCheck.value != filter.value) {
-            console.log("dicocane");
             minmax.updatePartialMinMax(minPrice.value, maxPrice.value);
         }
 
@@ -223,7 +219,6 @@ onMounted(() => {
     flex-direction: column;
 
     &__wrapper {
-
         display: flex;
         flex-direction: row;
         width: 100%;

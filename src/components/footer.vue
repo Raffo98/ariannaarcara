@@ -33,6 +33,11 @@ const props = defineProps({
     height: 55px;
     background-color: $color-white;
 
+    .mobile & {
+        left: 1.8rem;
+        right: 1.8rem;
+    }
+
     &__box {
         width: calc(100% - 18rem);
         display: flex;
@@ -41,10 +46,15 @@ const props = defineProps({
         justify-content: space-between;
         height: 70px;
 
+        .mobile & {
+            width: calc(100% - 3.6rem);
+        }
+
         &__contacts {
             p {
-                @include header;
+                @include text-SS;
                 color: $color-black;
+                text-decoration: underline;
             }
         }
     }

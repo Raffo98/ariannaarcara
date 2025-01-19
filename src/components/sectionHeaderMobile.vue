@@ -1,37 +1,31 @@
 <template>
   <!-- @click="dropdown()" -->
   <div class="sectionHeader">
-    <router-link :to="{ name: `${idSection == 'news' ? idSection : ''}` }">
-      <button class="sectionHeader__section" @click="
+    <router-link :to="props.content.id === 'cv'
+      ? { name: 'cv' }
+      : props.content.id === 'about'
+        ? { name: 'about' }
+        : { name: 'gallery', params: { filter: props.content.id } }">
+      <button class="sectionHeader__text" @mouseover="
+        isHover = true;
       dropdown();
-    ">
-        <p class="sectionHeader__section__title" v-html="props.content.title" :style="{
-      color:
-        isOpen
-          ? 'rgba(231, 83, 23, 1)'
-          : 'rgba(247, 247, 247, 1)',
-    }"></p>
-        <div class="sectionHeader__section__arrow" v-if="props.content.subsections.length > 0">
-          <img :src="`${$assetsBasePath}icons/arrow.svg`" :class="{
-      sectionHeader__section__arrow__icon: true,
-      rotate: isOpen,
-      'active-arrow': isOpen,
-    }" />
-        </div>
+      " @mouseleave="
+        isHover = false;
+      stateSection.changeSectionId('');
+      ">
+        <p class="sectionHeader__text__title" :style="[
+          isHover || idSection == props.content.title
+            ? { color: black }
+            : { color: black },
+        ]">
+          {{ props.content.title }}
+          <span :class="{
+            underline: true,
+            animate_underline: isHover || idSection == props.content.title,
+          }"></span>
+        </p>
       </button>
     </router-link>
-
-    <div class="sectionHeader__dropdown">
-      <router-link :to="{ name: `${idSub}` }">
-        <div class="sectionHeader__dropdown__subsection" :class="{ slideDown: isOpen }">
-          <button class="sectionHeader__dropdown____subsection__btn" v-for="(sub, idx) in props.content.subsections"
-            :key="idx" @click="idSub = sub.id">
-            <p class="sectionHeader__dropdown__subsection__btn__text" v-html="sub.title"></p>
-          </button>
-        </div>
-      </router-link>
-
-    </div>
   </div>
 </template>
 <script setup>
@@ -56,7 +50,6 @@ provide("$tvaMq", $tvaMq);
 const idSection = ref("");
 // const isHover = ref(false);
 // const isHoverSub = ref(false);
-const idSub = ref("");
 const isOpen = ref(false);
 
 const dropdown = () => {
@@ -91,6 +84,7 @@ watch(stateSection, () => {
   position: relative;
   width: 100%;
   padding-top: 2rem !important;
+  padding-left: 1.5rem !important;
 
   &__section {
     display: flex;
@@ -112,55 +106,8 @@ watch(stateSection, () => {
       }
     }
 
-    &__arrow {
-      &__icon {
-        filter: invert(10%) sepia(49%) saturate(0%) hue-rotate(330deg) brightness(110%) contrast(94%);
-        transition: transform 0.3s ease, filter 0.3s ease;
-      }
-    }
-
-
   }
 
-  &__dropdown {
-
-    &__subsection {
-      display: flex;
-      flex-direction: column;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .8s ease;
-
-      &__btn {
-        &__text {
-          // padding: 14px 8px 14px 8px !important;
-          color: $color-white;
-          @include paragraph-m;
-          text-align: left;
-          padding: 1rem 3rem 0rem 3rem !important;
-
-          .mobile & {
-            padding: 1rem 1rem 0rem 1rem !important;
-
-          }
-        }
-      }
-    }
-  }
-}
-
-.slideDown {
-  max-height: 200px;
-}
-
-.rotate {
-  transform: rotate(180deg);
-  color: $color-orange;
-  /* Applica la rotazione quando l'arrow è "rotated" */
-}
-
-.active-arrow {
-  filter: invert(42%) sepia(49%) saturate(2300%) hue-rotate(330deg) brightness(83%) contrast(100%);
 }
 
 // .dropdown-active {

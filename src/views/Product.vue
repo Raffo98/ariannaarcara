@@ -17,7 +17,9 @@
                 <div class="product__info__price__min" v-html="price[0]"></div>
             </div>
             <div class="product__info__cta">
-                <button v-html="props.content.info.cta"></button>
+                <a :href="`mailto:arcara.studio@gmail.com?subject=Limited%20edition%20sale%20-%20${product[0].code}`">
+                    <button v-html="props.content.info.cta"></button>
+                </a>
             </div>
             <div class="product__info__details" v-for="(detail, idx) in product[0].product.accordions" :key="idx">
                 {{ }}
@@ -86,8 +88,16 @@ onBeforeMount(() => {
     align-items: flex-start;
     gap: 1.4rem;
 
+    .mobile & {
+        flex-direction: column;
+    }
+
     &__info {
         width: 50%;
+
+        .mobile & {
+            width: 100%;
+        }
 
         &__productcode {
             @include details;
@@ -131,6 +141,11 @@ onBeforeMount(() => {
     &__image {
         width: 50%;
 
+        .mobile & {
+            width: 100%;
+            order: -1;
+        }
+
         img {
             box-sizing: border-box;
             width: 100%;
@@ -139,6 +154,10 @@ onBeforeMount(() => {
 
     &__gallery {
         width: 50%;
+
+        .mobile & {
+            width: 100%;
+        }
     }
 }
 </style>

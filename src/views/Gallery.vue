@@ -7,7 +7,7 @@
 
 <script setup>
 import Gallery from "@/components/gallery.vue";
-import { useRoute } from 'vue-router'
+import { useRoute } from 'vue-router';
 import { computed } from "vue";
 
 const route = useRoute();

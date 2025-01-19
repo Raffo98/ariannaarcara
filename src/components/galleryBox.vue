@@ -27,12 +27,21 @@ const props = defineProps({
     width: calc((100% - 5rem) / 3);
     box-sizing: border-box;
 
+    .mobile & {
+        // width: calc((100% - 3.6rem) / 1);
+        width: 100%;
+    }
+
     &__wrapper {
         height: 75vh;
         display: flex;
         align-items: center;
         background-color: $color-white;
         transition: all .2s ease;
+
+        .mobile & {
+            height: auto;
+        }
 
         &:hover {
             background-color: $color-softgrey;

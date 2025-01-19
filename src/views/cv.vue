@@ -9,7 +9,8 @@
             <div class="cv__exhibitions__title" v-html="props.content.title"></div>
             <div class="cv__exhibitions__sections" v-for="(section, id) in props.content.exhibitions" :key="id">
                 <div class="cv__exhibitions__sections__year" v-html="section.year"></div>
-                <div class="cv__exhibitions__sections__exhibition" v-for="(exhibition, id) in section.exhibition" :key="id">
+                <div class="cv__exhibitions__sections__exhibition" v-for="(exhibition, id) in section.exhibition"
+                    :key="id">
                     <div class="cv__exhibitions__sections__exhibition__text" v-html="exhibition.title"></div>
                 </div>
             </div>
@@ -34,12 +35,18 @@ const props = defineProps({
     flex-direction: column;
     max-width: calc(100% - 35rem);
 
+    .mobile & {
+        max-width: 100%;
+    }
+
     &__bio {
         width: 100%;
         @include text-SS;
         line-height: 160%;
         padding-bottom: 2rem !important;
+
     }
+
     &__pic {
         width: 100%;
         padding-bottom: 2rem !important;
@@ -55,9 +62,14 @@ const props = defineProps({
             @include text-SS;
         }
     }
+
     &__exhibitions {
         width: 100%;
         @include text-S;
+
+        .mobile & {
+            @include text-M;
+        }
 
         &__title {
             width: 100%;
@@ -79,7 +91,7 @@ const props = defineProps({
 
             &__exhibition {
                 padding-bottom: 2rem !important;
-                
+
             }
 
         }

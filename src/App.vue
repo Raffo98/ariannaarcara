@@ -120,6 +120,7 @@ const fetchProductData = async () => {
             lang: record.fields.lang,
             img: record.fields.image?.[0]?.url || '', // Usa optional chaining
             gallery: record.fields.gallery || [], // Default a un array vuoto
+            order: record.fields.order,
             product: {
               price: [record.fields.max_price, record.fields.min_price],
               accordions: [
@@ -134,6 +135,8 @@ const fetchProductData = async () => {
           });
 
         });
+
+        productDb.value.sort((a, b) => a.order - b.order);
         fetchNextPage();
       },
       (err) => {
@@ -296,6 +299,11 @@ html {
   flex-direction: column;
   align-items: center;
   margin: 8rem 9rem 5rem 9rem !important;
+
+  .mobile & {
+    max-width: calc(100% - 3.6rem);
+    margin: 8rem 1.8rem 5rem 1.8rem !important;
+  }
 
 }
 

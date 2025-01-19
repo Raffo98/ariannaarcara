@@ -1,39 +1,32 @@
 <template>
     <div class="filter" ref="filter" v-if="minmax.min != minmax.max">
-        <!-- <div class="filter__box">
-            <div class="filter__box__labels">
-                <label for="min-price">Prezzo da</label>
-                <input id="min-price" type="number" v-model="minPrice" />
+        <div class="filter__button" @click="isOpen"
+            :style="[minmax.isFilterOpen ? { borderBottom: '1px solid white !important' } : '']">
+            <div>Prezzo</div>
+            <img :src="`${$assetsBasePath}/icons/arrow-down.svg`" alt="" :class="{ rotate: minmax.isFilterOpen }" />
 
-                <label for="max-price">Prezzo fino a</label>
-                <input id="max-price" type="number" v-model="maxPrice" />
-            </div>
-            <div class="filter__box__slider"></div>
         </div>
-        <div class="slider">
-            <input type="range" v-model="minPrice" :step="1" />
-            <input type="range" v-model="maxPrice" :step="1" />
-        </div> -->
-        <!-- <div class="filter__box" @mouseover="isHover = true" @mouseleave=" isHover = false" @click="isClicked = !isClicked"
-            :style="[isHover ? { backgroundPosition: 'left bottom' } : { backgroundPosition: 'right bottom' }]">
-            <p class="filter__box__text" v-html="props.content.text" v-if="$tvaMq == 'desktop' || $tvaMq == 'large'"></p>
-            <img :src="`${$assetsBasePath}icons/news/${props.content.icon}.svg`" />
-        </div> -->
-        <!-- <div class="box">
-            <input v-model="value" @input="clearErrorMsg" />
-            <span style="color: red; margin-left: 20px;">{{ errorMsg }}</span>
-        </div> -->
-        <!-- <vue-slider v-model="value" :min="props.minmax[0]" :max="props.minmax[1]"
-            :tooltip="errorMsg ? 'none' : 'always'" :marks="[props.minmax[0], props.minmax[1]]" @error="handleError"
-            @change="clearErrorMsg" :enable-cross="false" :process="true"></vue-slider> -->
-        <div class="filter__box">
-            {{ value }}
+        <div class="filter__box" v-show="minmax.isFilterOpen">
+            <!-- {{ value }}
             {{ minmax.min }}
             {{ minmax.max }}
             {{ minmax.partialMin }}
-            {{ minmax.partialMax }}
-            <vue-slider v-model="value" :min="minmax.min" :max="minmax.max" :tooltip="'always'" @change="inputHandler"
-                :enable-cross="false" :process="true" :interval="10" :lazy="true"></vue-slider>
+            {{ minmax.partialMax }} -->
+            <div class="filter__box__input">
+                <div class="filter__box__input__cell"> <input type="number" :value="minmax.partialMin" :min="minmax.min"
+                        :max="minmax.max" @input="inputHandlerTextMin">
+                    <span>€</span>
+                </div>
+                -
+                <div class="filter__box__input__cell">
+                    <input type="number" :value="minmax.partialMax" :min="minmax.min" :max="minmax.max"
+                        @input="inputHandlerTextMax">
+                    <span>€</span>
+                </div>
+            </div>
+            <vue-slider ref="slider" v-bind="options" v-model="value" :min="minmax.min" :max="minmax.max"
+                :tooltip="'none'" @change="inputHandler" :enable-cross="false" :process="true"
+                :lazy="true"></vue-slider>
         </div>
     </div>
 
@@ -41,34 +34,59 @@
 </template>
 
 <script setup>
-// import { ref } from 'vue';
 import VueSlider from 'vue-slider-component';
 import 'vue-slider-component/theme/default.css';
 import { useStateStore } from "@/utilities/store/store";
 import { watch, ref } from "@vue/runtime-core";
 
 
-
-// const props = defineProps({
-//     min: Number,
-//     max: Number,
-// });
-
-
 const minmax = useStateStore();
+const slider = ref(null);
+const options = ref({
+    dotOptions: [
+        {
+            style: {
+                backgroundColor: "#000",
+                boxShadow: "none",
+            },
+        },
+        {
+            style: {
+                backgroundColor: "#000",
+                boxShadow: "none",
+            },
+        },
+    ],
+});
 
 
-// if (minmax.min == 0 || minmax.max == 0) {
-//     // console.log("we",);
-//     // console.log(props.min, props.max)
-//     minmax.updateMinMax(props.min, props.max);
-//     // console.log(minmax.min)
-
-// }
+function isOpen() {
+    minmax.updateFilterState(minmax.isFilterOpen);
+}
 
 function inputHandler(e) {
     // minmax.updateMinMax(props.min, props.max);
+    console.log(e);
     minmax.updatePartialMinMax(e[0], e[1]);
+}
+
+function inputHandlerTextMin(e) {
+    if (e.target.valueAsNumber >= minmax.min) {
+        minmax.updatePartialMinMax(e.target.valueAsNumber, minmax.partialMax);
+        // inputHandler([e.target.valueAsNumber, minmax.partialMax]);
+        value.value = [e.target.valueAsNumber, minmax.partialMax];
+    }
+}
+
+function inputHandlerTextMax(e) {
+    console.log(e.target.valueAsNumber);
+    if (e.target.valueAsNumber <= minmax.max) {
+        minmax.updatePartialMinMax(minmax.partialMin, e.target.valueAsNumber);
+        // inputHandler([minmax.partialMin, e.target.valueAsNumber]);
+        value.value = [minmax.partialMin, e.target.valueAsNumber];
+    }
+
+    // minmax.updatePartialMinMax(e[0], e[1]);
 }
 
 
@@ -77,40 +95,9 @@ watch(() => minmax.min, () => {
 });
 
 
-
-// Definizione dei tipi di errore
-// const ERROR_TYPE = {
-//     VALUE: 1,
-//     INTERVAL: 2,
-//     MIN: 3,
-//     MAX: 4,
-//     ORDER: 5,
-// };
-
 // Variabili reattive
 const value = ref([minmax.min, minmax.max]);
-// const value = minmax.minmax;
-// const errorMsg = ref('');
 
-// Metodi
-// const handleError = (type, msg) => {
-//     switch (type) {
-//         case ERROR_TYPE.MIN:
-//             // Logica per errore MIN
-//             break;
-//         case ERROR_TYPE.MAX:
-//             // Logica per errore MAX
-//             break;
-//         case ERROR_TYPE.VALUE:
-//             // Logica per errore VALUE
-//             break;
-//     }
-//     errorMsg.value = msg;
-// };
-
-// const clearErrorMsg = () => {
-//     errorMsg.value = '';
-// };
 </script>
 
 
@@ -119,11 +106,65 @@ const value = ref([minmax.min, minmax.max]);
 
 <style lang="scss" scoped>
 .filter {
-    width: 10%;
-}
+    width: 100%;
+    cursor: 'pointer';
+    height: 48px;
+    margin-bottom: 2rem !important;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
 
-.vue-slider-rail {
-    background-color: red;
+    &__button {
+        @include text-SS;
+        position: absolute;
+        width: 100px;
+        background-color: $color-white;
+        height: 48px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: 1.5px solid $color-black !important;
+        box-sizing: border-box !important;
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    &__box {
+        position: absolute;
+        top: 46.3px;
+        border: 1.7px solid $color-black !important;
+        padding: 2.25rem 1rem !important;
+        width: 300px;
+        z-index: 0;
+        background-color: $color-white;
+        box-sizing: border-box;
+
+        &__input {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-bottom: 2rem !important;
+            gap: 1rem !important;
+            align-items: center;
+
+            &__cell {
+                width: 100%;
+                border: 1.7px solid $color-black !important;
+                @include text-SS;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 .5rem 0 .5rem !important;
+            }
+
+            input {
+                width: 100%;
+                border: 0 !important;
+            }
+        }
+    }
 }
 
 :deep(.vue-slider-rail) {
@@ -143,5 +184,36 @@ const value = ref([minmax.min, minmax.max]);
 
 :deep(.vue-slider-dot-tooltip-text) {
     padding: .2rem !important;
+}
+
+/* Per Webkit browsers (Chrome, Safari, Edge) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Per Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+    height: 48px;
+    @include text-SS;
+
+
+}
+
+input[type="number"]::after {
+    transform: translateY(-50%);
+    font-size: 16px;
+}
+
+input[type="number"]:focus {
+    outline: none;
+}
+
+.rotate {
+    transform-origin: center;
+    transform: rotate(180deg);
+
 }
 </style>

@@ -22,8 +22,19 @@ const props = defineProps({
   flex-direction: column;
   max-width: calc(100% - 35rem);
 
+  .mobile & {
+  max-width: 100%;
+
+  }
+
   &__text {
     padding-top: 2rem !important;
+    @include text-SS;
+    line-height: 160%;
+
+    .mobile & {
+      @include text-M;
+    }
 
   }
 
