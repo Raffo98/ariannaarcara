@@ -157,7 +157,9 @@ const createImgArray = () => {
     .filter(product => product.img) // Esclude gli oggetti senza img
     .map(product => ({
       img: product.img,
+      gallery: product.gallery,
       order: product.order,
+      code: product.code
     }));
 }
 
@@ -280,7 +282,7 @@ html {
   align-items: center;
   margin: 8rem 9rem 5rem 9rem !important;
 
-  .mobile & {
+  .mobile &, .tablet & {
     max-width: calc(100% - 3.6rem);
     margin: 8rem 1.8rem 5rem 1.8rem !important;
   }

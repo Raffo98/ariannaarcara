@@ -30,9 +30,10 @@
             </div>
         </div>
         <div class="product__gallery" v-if="product[0].gallery.length > 0">
-            <Slideshow :gallery="product[0].gallery" />
+            <Slideshow :gallery="props.img.find(item => item.code === route.params.id).gallery" />
         </div>
-        <div class="product__image" v-else><img :src="product[0].img"></div>
+        
+        <div class="product__image" v-else><img :src="props.img.find(item => item.code === route.params.id).img"></div>
     </div>
 </template>
 
@@ -50,7 +51,8 @@ const price = ref([0, 0]);
 
 const props = defineProps({
     content: Object,
-    data: Array
+    data: Array,
+    img: Array
 });
 
 

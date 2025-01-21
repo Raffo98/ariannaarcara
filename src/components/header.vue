@@ -82,6 +82,14 @@ watch(route, () => {
   isOpenMobile.value = false;
 });
 
+watch(isOpenMobile, (newValue) => {
+  if (newValue) {
+    document.documentElement.classList.add("no-scroll"); // Usa document.documentElement per <html>
+  } else {
+    document.documentElement.classList.remove("no-scroll");
+  }
+});
+
 
 
 // watch(
@@ -103,7 +111,7 @@ watch(route, () => {
   width: 100%;
   background-color: $color-white;
 
-  .mobile & {
+  .mobile &, .tablet & {
     left: 1.8rem;
     right: 1.8rem;
   }
@@ -121,7 +129,7 @@ watch(route, () => {
     border-bottom: 2px solid $color-black !important;
     // padding: 0 3rem 0 3rem !important;
 
-    .mobile & {
+    .mobile &, .tablet & {
       width: calc(100% - 3.6rem);
 
     }
@@ -233,5 +241,10 @@ watch(route, () => {
 .border {
   border-bottom: 2px solid black !important;
   width: 100%;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }
 </style>

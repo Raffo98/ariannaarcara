@@ -22,7 +22,7 @@ const props = defineProps({
   flex-direction: column;
   max-width: calc(100% - 35rem);
 
-  .mobile & {
+  .mobile &, .tablet & {
   max-width: 100%;
 
   }

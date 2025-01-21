@@ -33,7 +33,7 @@ const props = defineProps({
     height: 55px;
     background-color: $color-white;
 
-    .mobile & {
+    .mobile &, .tablet & {
         left: 1.8rem;
         right: 1.8rem;
     }
@@ -46,7 +46,7 @@ const props = defineProps({
         justify-content: space-between;
         height: 70px;
 
-        .mobile & {
+        .mobile &, .tablet & {
             width: calc(100% - 3.6rem);
         }
 
