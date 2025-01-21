@@ -2,139 +2,378 @@
   "header": {
     "sections": [
       {
-        "title": "azienda",
-        "subsections": [
-          {
-            "title": "chi siamo",
-            "id": "about"
-          },
-          {
-            "title": "qualità e certificazioni",
-            "id": "quality"
-          },
-          {
-            "title": "contatti",
-            "id": "contacts"
-          }
-        ]
+        "title": "Fine Art Prints",
+        "id": "fineartprints"
       },
       {
-        "title": "servizi",
-        "subsections": [
-          {
-            "title": "impianti",
-            "id": "plants"
-          },
-          {
-            "title": "laboratorio",
-            "id": "lab"
-          }
-        ]
+        "title": "Darkroom Prints",
+        "id": "darkroomprints"
       },
       {
-        "title": "news",
-        "subsections": []
+        "title": "Limited editions",
+        "id": "limitededitions"
+      },
+      {
+        "title": "Books",
+        "id": "books"
+      },
+      {
+        "title": "CV",
+        "id": "cv"
+      },
+      {
+        "title": "About",
+        "id": "about"
       }
-    ],
-    "button": {
-      "text": "richiedi informazioni",
-      "icon": "arrow-right"
-    }
+    ]
+  },
+  "breadcrumbs": {
+    "path": "home"
   },
   "home": {
+    "path": [
+      "home"
+    ],
     "hero": {
-      "title": "trattamenti termici<br>for the la metalmecanig.",
-      "cta": "scopri di più"
+      "title": "“[…] I have therefore decided to sell a selection of my works created over the years. Each piece is a fragment of this story.“",
+      "cta": "Read more"
     },
-    "services": {
-      "title": "i nostri servizi principali",
-      "service": [
+    "filter": {
+      "title": "Price"
+    }
+  },
+  "gallery": {
+    "filter": {
+      "title": "Price"
+    }
+  }, 
+  "product": {
+    "info": {
+      "code": "Product code: ",
+      "cta": "For inquiries",
+      "accordion": [
         {
-          "title": "carbonitrurazione",
-          "subtitle": "da 0,02mm a 0,30 mm di profondità"
+          "id": "details",
+          "text": "Technical info"
         },
         {
-          "title": "brunitura",
-          "subtitle": "brunitura protettiva"
+          "id": "description",
+          "text": "Description"
         },
         {
-          "title": "bonifica",
-          "subtitle": "8,8 - 9,8 -10,9 -12,9 su acciai basso, medio e altro legati"
+          "id": "exhibitions",
+          "text": "Exhibitions"
         },
         {
-          "title": "trattamenti speciali",
-          "subtitle": "con ricette personalizzate"
+          "id": "info",
+          "text": "Shipping method"
         }
       ]
-    },
-    "contact": {
-      "title": "cerchi un partner affidabile per trattamenti termici di qualità?",
-      "button": {
-        "text": "contattaci",
-        "icon": "arrow-right"
-      }
     }
   },
-  "contacts": {
-    "title": "contacts",
-    "text": "La volontà dell’Organizzazione è divenire interlocutore principale dei propri clienti in merito alla gestione di tutte le problematiche relative ai trattamenti termici, mirando a soddisfarne tutte le esigenze e garantendo un servizio di elevata qualità, in tempi brevi e nel rispetto dei requisiti applicabili.",
-    "info": {
-      "title": "dove trovarci",
-      "details": [
-        {"title": "sede operativa", "content": "Via Giancarlo Puecher, 5<br>Paderno Dugnano (MI) Italia"},
-        {"title": "sede legale", "content": "via Dell'Industria, 12<br>20032 Cormano (MI) Italia"},
-        {"title": "telefono", "content": "+39 02 123456"},
-        {"title": "mail", "content": "info@efestotrattamenti.com"}
-      ]
-    }
+  "cv": {
+    "bio": "Arianna Arcara was born in Monza, Italy, in 1984. After studying photography, she co-founded Cesura, a photo collective that explores various approaches to documentary photography, and the associated publishing house, Cesura Publish, where she serves as co-art director. Her artistic practice delves into the ever-changing meaning and shape of “boundaries” – natural, urban, cultural, or human – with a particular focus on adolescence. In several of her long-term projects, Arcara aims to walk along one of these boundaries through the creation of collaborative processes and multidisciplinary exhibitions. She continually questions how – and if – her photography impacts the people and stories she follows, constantly seeking and reflecting on new ways to engage and empower her subjects.",
+    "title": "Main exhibitions",
+    "copyright": "Photo by Matteo Buonomo",
+    "exhibitions": [
+      {
+        "year": "2024",
+        "exhibition": [
+          {
+            "title": "<i>Té, tèins, ten, tén, teins</i> – CAMERA, Turin, Italy"
+          },
+          {
+            "title": "<i>Altra versione dello stesso paesaggio</i> – Jest, Turin, Italy"
+          },
+          {
+            "title": "<i>Here, looking for</i> – Salaborsa, Bologna, Italy"
+          },
+          {
+            "title": "<i>Here, looking for</i> – MAXXI, Rome, Italy"
+          },
+          {
+            "title": "<i>Ukraine stories of resistance, collective exhibition</i> – The Fort Institute of Photography, Warsaw, Poland"
+          }
+        ]
+      },
+      {
+        "year": "2023",
+        "exhibition": [
+          {
+            "title": "<i>TRE-DI-CI, collective exhibition</i> – Palazzo Reale, Milan, Italy"
+          },
+          {
+            "title": "<i>Otium</i> – Grotte di Catullo, Sirmione, Italy"
+          },
+          {
+            "title": "<i>Cronache d’Acqua, collective exhibition</i> – Gallerie d’Italia, Turin, Italy"
+          },
+          {
+            "title": "<i>Testimone Oculare, Elèna, collective exhibition</i> – Savignano Foto Festival, Italy"
+          },
+          {
+            "title": "<i>Ukraine stories of resistance, collective exhibition</i> – Next, Paestum, Italy"
+          },
+          {
+            "title": "<i>È un muro invisibile</i> – Cascina Merlata, Milan, Italy"
+          },
+          {
+            "title": "<i>Ukraine stories of resistance, collective exhibition</i> – Istituto Polacco di Roma, Rome, Italy"
+          },
+          {
+            "title": "<i>A view of Peeping Tom</i> – Teatro Ariosto, Reggio Emilia, Italy"
+          },
+          {
+            "title": "<i>Ukraine stories of resistance, collective exhibition</i> – Museo del Risorgimento, Milan, Italy"
+          }
+        ]
+      },
+      {
+        "year": "2022",
+        "exhibition": [
+          {
+            "title": "<i>Coming of age, collective exhibition</i> – Fondation Louis Vuitton, Paris, France"
+          },
+          {
+            "title": "<i>A view of Peeping Tom</i> – Fotografia Europea, Reggio Emilia, Italy"
+          },
+          {
+            "title": "<i>Fotografe!, collective exhibition</i> – Forte di Belvedere, Florence, Italy"
+          },
+          {
+            "title": "<i>Indigeno – archivio di pluralità</i> – Off Topic, Turin, Italy"
+          },
+          {
+            "title": "<i>Ukraine stories of resistance, collective exhibition</i> – ICCD Rome, Italy"
+          }
+        ]
+      },
+      {
+        "year": "2021",
+        "exhibition": [
+          {
+            "title": "<i>Altra versione dello stesso paesaggio</i> – Pinacoteca Levis, Chiomonte, Italy"
+          },
+          {
+            "title": "<i>Fine Turno</i> – Triennale, Milan, Italy"
+          },
+          {
+            "title": "<i>Fine Turno</i> – Dresden Technical Collection, Dresden, Germany"
+          }
+        ]
+      },
+      {
+        "year": "2020",
+        "exhibition": [
+          {
+            "title": "<i>Interludio – Cesura Collective</i> – Sifest, Savignano Sul Rubicone, Italy"
+          },
+          {
+            "title": "<i>Carte de visite</i> – Mufoco, Cinisello Balsamo, Italy"
+          },
+          {
+            "title": "<i>Po/The river</i> – Villa Camperio, Italy"
+          }
+        ]
+      },
+      {
+        "year": "2018",
+        "exhibition": [
+          {
+            "title": "<i>On the other side of</i> – Draiflessen Collection, Mettingen, Germany"
+          },
+          {
+            "title": "<i>Found photos in Detroit</i> – Palazzo Sambuca, Palermo, Italy"
+          },
+          {
+            "title": "<i>Cesura Collective</i> – Base, Milan, Italy"
+          }
+        ]
+      },
+      {
+        "year": "2017",
+        "exhibition": [
+          {
+            "title": "<i>On the other side of</i> – Nobel Peace Center, Oslo, Norway"
+          },
+          {
+            "title": "<i>On the other side of</i> – Officine Fotografiche, Rome, Italy"
+          },
+          {
+            "title": "<i>On the other side of</i> – Hamburg Deichtorhallen, Amburg, Germany"
+          },
+          {
+            "title": "<i>SS36</i> – Marselleria, Milan, Italy"
+          }
+        ]
+      },
+      {
+        "year": "2016",
+        "exhibition": [
+          {
+            "title": "<i>On the other side of</i> – Villa Argentina, Viareggio, Italy"
+          },
+          {
+            "title": "<i>Cesure, collective exhibition</i> – Casa Romei, Ferrara, Italy"
+          },
+          {
+            "title": "<i>Found photos in Detroit</i> – MWW – Wroclaw Contemporary Museum, Poland"
+          },
+          {
+            "title": "<i>On the other side of</i> – Gulbenkian Foundation, Paris, France"
+          },
+          {
+            "title": "<i>Post Focum</i> – Photopia festival, Reggio Calabria, Italy"
+          }
+        ]
+      },
+      {
+        "year": "2015",
+        "exhibition": [
+          {
+            "title": "<i>Found photos in Detroit</i> – Clark House Initiative, Mumbai, India"
+          },
+          {
+            "title": "<i>Found photos in Detroit</i> – Fotografia Europea Festival, Reggio Emilia, Italy"
+          },
+          {
+            "title": "<i>Found photos in Detroit</i> – Giacomo Guidi Galleria, Rome, Italy"
+          },
+          {
+            "title": "<i>Carte De Visite</i> – Mapping Contemporary Art Space, Rovereto, Italy"
+          },
+          {
+            "title": "<i>Lo scudo di Perseo, collective exhibition</i> – Sala del Carmine, Massa Lombarda, Italy"
+          }
+        ]
+      },
+      {
+        "year": "2014",
+        "exhibition": [
+          {
+            "title": "<i>Found photos in Detroit</i> – Daegu Photo Biennale, South Korea"
+          },
+          {
+            "title": "<i>Found photos in Detroit</i> – Derby Photo Festival, England"
+          },
+          {
+            "title": "<i>Carte de Visite</i> – Artissima, Turin, Italy"
+          },
+          {
+            "title": "<i>Found photos in Detroit</i> – Museum of Contemporary Photography, Chicago, USA"
+          },
+          {
+            "title": "<i>Po/The River</i> – Setup fair, Bologna, Italy"
+          }
+        ]
+      },
+      {
+        "year": "2013",
+        "exhibition": [
+          {
+            "title": "<i>Found photos in Detroit</i> – Blank, Turin, Italy"
+          },
+          {
+            "title": "<i>Found photos in Detroit</i> – Festival Images, Vevey, Switzerland"
+          },
+          {
+            "title": "<i>Po/The River</i> – Spazio Gerra, Reggio Emilia, Italy"
+          }
+        ]
+      },
+      {
+        "year": "2012",
+        "exhibition": [
+          {
+            "title": "<i>Found photos in Detroit</i> – Otranto Legality Experience, Otranto, Italy"
+          },
+          {
+            "title": "<i>SS36</i> – SI Fest, Savignano Sul Rubicone, Italy"
+          }
+        ]
+      },
+      {
+        "year": "2011",
+        "exhibition": [
+          {
+            "title": "<i>Found photos in Detroit</i> – Le Bal, Paris, France"
+          },
+          {
+            "title": "<i>SS36</i> – Fotografia Festival Internazionale di Roma, Italy"
+          },
+          {
+            "title": "<i>Fotografia di una nazione</i> – Palazzo delle Esposizioni, Rome, Italy"
+          }
+        ]
+      },
+      {
+        "year": "2010",
+        "exhibition": [
+          {
+            "title": "<i>Found photos in Detroit</i> – Festival di Fotografia Europea, Reggio Emilia, Italy"
+          },
+          {
+            "title": "<i>Found photos in Detroit</i> – Circolo degli Artisti, Faenza, Italy"
+          },
+          {
+            "title": "<i>SS36</i> – Spazio Gerra, Reggio Emilia, Italy"
+          }
+        ]
+      },
+      {
+        "year": "2009",
+        "exhibition": [
+          {
+            "title": "<i>Borderland</i> – Festival di Fotografia Europea, Reggio Emilia, Italy"
+          },
+          {
+            "title": "<i>Shifting Perspectives</i> – Castello di Belgioioso, Pavia, Italy"
+          }
+        ]
+      },
+      {
+        "year": "2008",
+        "exhibition": [
+          {
+            "title": "<i>Italian Perspectives</i> – Visa Pour l’Image, Perpignan, France"
+          },
+          {
+            "title": "<i>In Limbo</i> – Fotografia Festival Internazionale di Roma, Italy"
+          }
+        ]
+      }
+    ]
+  },
+  "about": {
+    "path": [
+      "home",
+      "chi siamo"
+    ],
+    "carousel": [
+      "1.jpeg",
+      "2.jpeg",
+      "3.jpeg",
+      "4.jpeg",
+      "5.jpeg",
+      "6.jpeg",
+      "7.jpeg",
+      "8.jpeg",
+      "9.jpeg",
+      "10.jpeg",
+      "11.jpeg"
+    ],
+    "text": "In the fall of 2005, I arrived in Cesura for the first time, a small village nestled in the valleys of Piacenza. I had just turned 21 and was about to meet Alex Majoli, a Magnum photographer, accompanied by Alessandro Sala, who was his first assistant at the time.<br> I still remember the emotions I felt sitting at that table. During the meeting, even though I understood English, I barely spoke, to the point where Alex asked Alessandro, “Is she shy?”. It wasn’t shyness or a language barrier holding me back—it was the sheer emotion of being there, sitting next to a photographer I deeply admired. On the way back, as I watched the landscape pass by, I thought to myself that this was the right place for me. Without hesitation, I accepted to work in Alex’s studio, which at the time was still in its early stages. The first time I walked through that door, I saw nothing but a bare mezzanine, a printer, and a few boxes. Alex asked me to cut a print; I had to use the floor because there wasn’t even a table yet. That simple gesture marked the beginning of a journey that would change my life. Year after year, I followed him with his work, learning not only the craft but above all, his dedication to photography. Over time, new people came through that door, bringing fresh ideas and experiences. I shared everything with them—endless workdays, long nights filled with laughter and debates, afternoons of soccer games, auteur films, and historical archives we devoured with an insatiable hunger to grow. We slept between Alex’s house and the studio, sometimes upstairs, sometimes under the mezzanine, wherever we could find space. But it didn’t matter. Without even realising it, we were building something truly unique.<br><br>In 2008, we founded Cesura, a documentary photography collective, a workshop, a printing lab, a publishing house—an environment where the impossible could become possible. What started as a single room soon became too small. Over the years, we expanded, renting adjacent spaces to welcome new people, ideas, and ambitions. There, we experienced extraordinary and difficult moments, achieved important milestones, and made mistakes. We mourned Andy, killed while doing his job, but even that didn’t stop us.<br> Cesura has always been our cornerstone, a home to return to, a place where photography is at the heart of everything, but where the true soul has always been, and will always be, the people.<br><br>In 2025, I will celebrate my twentieth year in this place.<br> Twenty years of journeys, experiences, sincere relationships, and photographs viewed and revisited within these walls. 2025 will also be the year we face yet another major challenge: the space that has housed us will be sold, and the collective will be forced to move out. For me and some of us, these are not just walls. This is the place where it all began, where I grew as a person and a photographer, where I faced important challenges, and where I found a second family. This is why we are trying to purchase these spaces individually, each doing what we can, to preserve the memories held within these walls and to honour those who are no longer here.<br>I have therefore decided to sell a selection of my works created over the years: prints, limited-edition boxes, and books.<br><br>Each piece is a fragment of this story.<br><br>With deep gratitude, I sincerely thank anyone who decides to support me, by purchasing one of my works or simply by helping me spread this message.<br><br>Arianna"
   },
   "footer": {
-    "info": {
-      "title": "vuoi più informazioni?",
-      "subsections": [
-        "info@efestotrattamenti.com",
-        "+39 335 275978"
-      ]
-    },
     "sections": [
       {
-        "title": "azienda",
-        "subsections": [
-          "chi siamo",
-          "qualità e certificazioni",
-          "contatti"
-        ]
+        "title": "arcara.studio@gmail.com",
+        "link": "mailto:arcara.studio@gmail.com"
       },
       {
-        "title": "servizi",
-        "subsections": [
-          "impianti",
-          "laboratorio"
-        ]
-      },
-      {
-        "title": "news",
-        "subsections": [
-          "categoria 1",
-          "categoria 2",
-          "categoria 3"
-        ]
+        "title": "@arianna_arcara",
+        "link": "https://www.instagram.com/arianna_arcara"
       }
-    ],
-    "social": {
-      "title": "follow su",
-      "subsections": [
-        "linkedin",
-        "youtube",
-        "facebook",
-        "instagram"
-      ]
-    },
-    "details": {
-      "title": "details",
-      "subsections": [
-        "Efesto SRL P.IVA: 10125490960"
-      ]
-    }
+    ]
   }
 }

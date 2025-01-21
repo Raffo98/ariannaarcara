@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="header__box">
-      <router-link :to="{ name: 'home', params: { lang: isClickedLang } }">
+      <router-link :to="{ name: 'home', query: { lang: isClickedLang } }">
         <p class="header__box__title">
           Arianna Arcara
         </p>
@@ -10,12 +10,8 @@
         <sectionHeader v-for="(section, idx) in props.sections" :key="idx" :content="section" />
         <div class="header__box__sections__buttons">
           <div class="header__box__sections__buttons__lang">
-            <button @mouseover="isHoveredIta = true" @mouseleave="isHoveredIta = false"
-              @click="$emit('setLang', 'it'); isClickedLang = 'it'"
-              :style="{ color: isHoveredIta || isClickedLang == 'it' ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 1)' }"><u>ita</u></button>
-            | <button @mouseover="isHoveredEng = true" @mouseleave="isHoveredEng = false"
-              @click="$emit('setLang', 'en'); isClickedLang = 'en'"
-              :style="{ color: isHoveredEng || isClickedLang == 'en' ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 1)' }"><u>eng</u></button>
+            <button @click="$emit('setLang', 'it'); isClickedLang = 'it'"><u>ita</u></button>
+            | <button @click="$emit('setLang', 'en'); isClickedLang = 'en'"><u>eng</u></button>
 
           </div>
         </div>
@@ -26,12 +22,8 @@
         </button>
         <div class="header__box__hamburger__buttons">
           <div class="header__box__hamburger__buttons__lang">
-            <button @mouseover="isHoveredIta = true" @mouseleave="isHoveredIta = false"
-              @click="$emit('setLang', 'it'); isClickedLang = 'it'"
-              :style="{ color: isHoveredIta || isClickedLang == 'it' ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 1)' }"><u>ita</u></button>
-            | <button @mouseover="isHoveredEng = true" @mouseleave="isHoveredEng = false"
-              @click="$emit('setLang', 'en'); isClickedLang = 'en'"
-              :style="{ color: isHoveredEng || isClickedLang == 'en' ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 1)' }"><u>eng</u></button>
+            <button @click="$emit('setLang', 'it'); isClickedLang = 'it'"><u>ita</u></button>
+            | <button @click="$emit('setLang', 'en'); isClickedLang = 'en'"><u>eng</u></button>
 
           </div>
         </div>
@@ -76,8 +68,6 @@ const props = defineProps({
 
 const { $tvaMq } = useTvaMq();
 provide("$tvaMq", $tvaMq);
-const isHoveredIta = ref("");
-const isHoveredEng = ref("");
 const isClickedLang = ref("it");
 const isOpenMobile = ref(false);
 

@@ -5,7 +5,7 @@
                 {{ props.content.info.code }} {{ product[0].code }}
 
             </div>
-            <div class="product__info__title" v-html="product[0].title"></div>
+            <div class="product__info__title" v-html="props.data.filter(item => item.code === route.params.id)[0].title"></div>
             <div class="product__info__price" v-if="price[1] != 0">
                 <div>€&nbsp;</div>
                 <div class="product__info__price__min" v-html="price[1]"></div>
@@ -21,7 +21,7 @@
                     <button v-html="props.content.info.cta"></button>
                 </a>
             </div>
-            <div class="product__info__details" v-for="(detail, idx) in product[0].product.accordions" :key="idx">
+            <div class="product__info__details" v-for="(detail, idx) in props.data.filter(item => item.code === route.params.id)[0].product.accordions" :key="idx">
                 {{ }}
                 <Accordion :details="detail" :titles="props.content.info.accordion
                     .filter(item => Object.keys(detail).includes(item.id))
@@ -50,14 +50,15 @@ const price = ref([0, 0]);
 
 const props = defineProps({
     content: Object,
-    data: Array,
+    data: Array
 });
+
 
 onBeforeMount(() => {
     if (props.data) {
         product.value = props.data.filter(item => item.code === route.params.id);
         if (product.value[0].product.price[0] == product.value[0].product.price[1]) {
-            price.value[0] = product.value[0].product.price[0].toLocaleString("it", {
+            price.value[0] = product.value[0].product.price[0].toLocaleString(i18n.locale.value, {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             });
@@ -73,6 +74,8 @@ onBeforeMount(() => {
             });
         }
     }
+console.log(product.value);
+
 });
 
 

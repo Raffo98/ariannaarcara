@@ -7,16 +7,11 @@
         : { name: 'gallery', params: { filter: props.content.id } }">
       <button class="sectionHeader__text" @mouseover="
         isHover = true;
-      dropdown();
       " @mouseleave="
         isHover = false;
       stateSection.changeSectionId('');
       ">
-        <p class="sectionHeader__text__title" :style="[
-          isHover || idSection == props.content.title
-            ? { color: black }
-            : { color: black },
-        ]">
+        <p class="sectionHeader__text__title">
           {{ props.content.title }}
           <span :class="{
             underline: true,
@@ -58,10 +53,6 @@ watch(stateSection, () => {
     idSection.value = stateSection.activeSectionId;
   }
 });
-
-function dropdown() {
-  stateSection.changeSectionId(props.content.title);
-}
 
 // function setIdPage(id) {
 //   console.log(id.id);

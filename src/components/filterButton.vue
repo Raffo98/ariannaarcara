@@ -2,7 +2,7 @@
     <div class="filter" ref="filter" v-if="minmax.min != minmax.max">
         <div class="filter__button" @click="isOpen"
             :style="[minmax.isFilterOpen ? { borderBottom: '1px solid white !important' } : '']">
-            <div>Prezzo</div>
+            <div v-html="props.content.title"></div>
             <img :src="`${$assetsBasePath}/icons/arrow-down.svg`" alt="" :class="{ rotate: minmax.isFilterOpen }" />
 
         </div>
@@ -38,6 +38,12 @@ import VueSlider from 'vue-slider-component';
 import 'vue-slider-component/theme/default.css';
 import { useStateStore } from "@/utilities/store/store";
 import { watch, ref } from "@vue/runtime-core";
+
+const props = defineProps({
+    data: Array,
+    content: Object
+    // filter: String
+});
 
 
 const minmax = useStateStore();

@@ -4,8 +4,7 @@
     <div class="breadcrumbs">
     </div>
     <div class="container" v-if="dataReady">
-      <router-view :content="$tm(`${path}`)" :data="productDb.filter(product => product.lang == i18n.locale.value)"
-        :sections="$tm('header')"></router-view>
+      <router-view :content="$tm(`${path}`)" :data="filteredData" :img="ImageDb" :sections="$tm('header')"></router-view>
       <!-- <router-view :content="$tm(`${path}`)" :data="i18n.locale.value === 'en' ? productDb.filter(product => product.lang === 'eng') : productDb.filter(product => product.lang === 'ita')" :sections="$tm('header')"></router-view> -->
       <!-- <router-view :content="content" :preview="path == 'home' ? newsPreview : null"></router-view> -->
       <!-- <router-view :content="$tm('home')"></router-view> -->
@@ -16,7 +15,7 @@
 
 <script setup>
 import version from "@/../package.json";
-import { onMounted, provide, ref, watchEffect, watch } from "@vue/runtime-core";
+import { onMounted, provide, ref, watch } from "@vue/runtime-core";
 import useTvaMq from "./plugins/tvaMq.js";
 import { useI18n } from "vue-i18n";
 import { useStateStore } from "@/utilities/store/store";
@@ -66,46 +65,16 @@ const isMobile = ref('');
 // const instanceAttrs = getCurrentInstance().attrs;
 setLanguage();
 
-const newsDb = ref([]);
+// const newsDb = ref([]);
 const productDb = ref([]);
+const ImageDb = ref([]);
 
-i18n.locale.value === 'en' ? productDb.value.filter(product => product.lang === 'eng') : productDb.value.filter(product => product.lang === 'ita')
+// const tagsList = ref([]);
+// const content = ref({});
 
-
-
-
-const tagsList = ref([]);
-const content = ref({});
-
-// const fetchNewsData = async () => {
-//   return new Promise((resolve, reject) => {
-//     airtable.base('news').select({}).eachPage(
-//       (records, fetchNextPage) => {
-//         records.forEach(async (record) => {
-//           newsDb.value.unshift({
-//             id: record.fields.id,
-//             title: record.fields.title,
-//             text: record.fields.text,
-//             tag: record.fields.tag,
-//             date: record.fields.date,
-//             img: record.fields.img[0].url
-//           });
-//         });
-//         fetchNextPage();
-//       },
-//       (err) => {
-//         if (err) {
-//           console.error(err);
-//           reject(err);
-//         } 
-//         else {
-//           newsDb.value = newsDb.value.sort((a, b) => new Date(b.date) - new Date(a.date));
-//           resolve(newsDb.value);
-//         }
-//       }
-//     );
-//   });
-// };
+const filteredData = computed(() => {
+  return productDb.value.filter(item => item.lang === i18n.locale.value);
+});
 
 const fetchProductData = async () => {
   return new Promise((resolve, reject) => {
@@ -138,6 +107,7 @@ const fetchProductData = async () => {
 
         productDb.value.sort((a, b) => a.order - b.order);
         fetchNextPage();
+        console.log(productDb.value)
       },
       (err) => {
         if (err) {
@@ -145,8 +115,9 @@ const fetchProductData = async () => {
           reject(err);
         }
         else {
-
-          resolve(completeMissingData());
+          ImageDb.value = createImgArray();
+          console.log(ImageDb.value);
+          resolve();
         }
       }
     );
@@ -155,38 +126,47 @@ const fetchProductData = async () => {
 
 //PRODUCTS SECTION
 // Funzione per completare i dati mancanti
-const completeMissingData = () => {
-  // Raggruppa i prodotti per lingua
-  const productsIta = productDb.value.filter(product => product.lang === 'ita');
-  const productsEng = productDb.value.filter(product => product.lang === 'eng');
+// const completeMissingData = () => {
+//   // Raggruppa i prodotti per lingua
+//   const productsIta = productDb.value.filter(product => product.lang === 'ita');
+//   const productsEng = productDb.value.filter(product => product.lang === 'eng');
 
-  // Mappa di prodotti in italiano per codice
-  const itaMap = new Map(productsIta.map(product => [product.code, product]));
+//   // Mappa di prodotti in italiano per codice
+//   const itaMap = new Map(productsIta.map(product => [product.code, product]));
 
-  // Loop sugli elementi in inglese e copia i dati mancanti
-  productsEng.forEach(engProduct => {
-    const itaProduct = itaMap.get(engProduct.code);
+//   // Loop sugli elementi in inglese e copia i dati mancanti
+//   productsEng.forEach(engProduct => {
+//     const itaProduct = itaMap.get(engProduct.code);
 
-    if (itaProduct) {
-      // Se `image` è mancante o vuoto, copia quello italiano
-      if (!engProduct.img || engProduct.img === '') {
-        engProduct.img = itaProduct.img;
-      }
+//     if (itaProduct) {
+//       // Se `image` è mancante o vuoto, copia quello italiano
+//       if (!engProduct.img || engProduct.img === '') {
+//         engProduct.img = itaProduct.img;
+//       }
 
-      // Se `gallery` è mancante o vuoto, copia quello italiano
-      if (!engProduct.gallery || engProduct.gallery.length === 0) {
-        engProduct.gallery = itaProduct.gallery;
-      }
-    }
-  });
+//       // Se `gallery` è mancante o vuoto, copia quello italiano
+//       if (!engProduct.gallery || engProduct.gallery.length === 0) {
+//         engProduct.gallery = itaProduct.gallery;
+//       }
+//     }
+//   });
+// };
 
-  console.log("Database aggiornato:", productDb.value);
-};
+const createImgArray = () => {
+  return productDb.value
+    .filter(product => product.img) // Esclude gli oggetti senza img
+    .map(product => ({
+      img: product.img,
+      order: product.order,
+    }));
+}
+
 
 
 const fetchData = async () => {
   try {
     await fetchProductData();
+
     dataReady.value = true;
   } catch (error) {
     console.error(error);
@@ -211,24 +191,24 @@ onMounted(() => {
 });
 
 
-watchEffect(() => {
-  // Aggiorna content solo quando productDb.value è definito
+// watchEffect(() => {
+//   // Aggiorna content solo quando productDb.value è definito
 
-  if (dataReady.value || 1 == 1) {
+//   if (dataReady.value || 1 == 1) {
 
-    if (path.value === 'news') {
-      content.value = { static: i18n.tm(path.value), dinamic: newsDb.value, tags: tagsList.value };
-    }
-    else if (path.value === 'newsId') {
-      const newsId = newsDb.value.filter(data => data.id == route.params.id);
-      content.value = { dinamic: newsId[0] }
-    }
-    else {
-      content.value = i18n.tm(path.value);
+//     if (path.value === 'news') {
+//       content.value = { static: i18n.tm(path.value), dinamic: newsDb.value, tags: tagsList.value };
+//     }
+//     else if (path.value === 'newsId') {
+//       const newsId = newsDb.value.filter(data => data.id == route.params.id);
+//       content.value = { dinamic: newsId[0] }
+//     }
+//     else {
+//       content.value = i18n.tm(path.value);
 
-    }
-  }
-});
+//     }
+//   }
+// });
 
 
 watch($tvaMq, () => {

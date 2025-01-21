@@ -1,7 +1,7 @@
 <template>
     <div class="gallery">
         <div class="gallery__title" v-html="filteredTitle"></div>
-        <Gallery :data="props.data" :filter="filter" />
+        <Gallery :data="props.data" :content="props.content.filter" :filter="filter" :img="props.img" />
     </div>
 </template>
 
@@ -18,7 +18,9 @@ const filter = computed(() => {
 
 const props = defineProps({
     data: Array,
-    sections: Array
+    sections: Object,
+    content: Object,
+    img: Array
 });
 
 

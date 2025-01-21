@@ -2,8 +2,8 @@
     <div class="box">
         <router-link :to="{ name: 'product', params: { id: `${props.product.code}` } }">
             <div class="box__wrapper">
-                <!-- {{ props.product.img }} -->
-                <img :src="props.product.img">
+
+                <img :src="props.img.img">
             </div>
             <div class="box__title">
                 <p v-html="props.product.title"></p>
@@ -17,6 +17,7 @@
 
 const props = defineProps({
     product: Object,
+    img: Object
 });
 
 </script>

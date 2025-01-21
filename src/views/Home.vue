@@ -6,7 +6,7 @@
                 <div class="home__hero__readmore" v-html="props.content.hero.cta"></div>
             </router-link>
         </div>
-        <Gallery :data="props.data" />
+        <Gallery :data="props.data" :content="props.content.filter" :img="props.img" />
     </div>
 </template>
 
@@ -22,7 +22,8 @@ provide("$tvaMq", $tvaMq);
 
 const props = defineProps({
     content: Object,
-    data: Array
+    data: Array,
+    img: Array
 });
 
 
