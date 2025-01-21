@@ -87,7 +87,7 @@ watch(stateSection, () => {
     width: 100%;
 
     &__title {
-      @include paragraph-m;
+      @include header;
       text-align: left !important;
       position: relative;
       // padding-right: 5px !important;

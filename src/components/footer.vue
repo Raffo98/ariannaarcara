@@ -12,11 +12,9 @@
 
 <script setup>
 
-
 const props = defineProps({
     content: Object,
 });
-
 
 </script>
 

@@ -19,12 +19,6 @@ import VueGoogleMaps from '@fawmi/vue-google-maps';
 
 import Home from "@/views/Home.vue";
 import About from "@/views/About.vue";
-import Quality from "@/views/Quality.vue";
-import Contacts from "@/views/Contacts.vue";
-import Plants from "@/views/Plants.vue";
-import News from "@/views/News.vue";
-import NewsId from "@/views/NewsId.vue";
-import Lab from "@/views/Lab.vue";
 import Product from "@/views/Product.vue";
 import Gallery from "@/views/Gallery.vue";
 import CV from "@/views/cv.vue";
@@ -67,43 +61,6 @@ const routes = [
     name: "about",
     component: About
 
-  },
-  {
-    path: "/quality",
-    name: "quality",
-    component: Quality
-
-  },
-  {
-    path: '/contacts',
-    name: "contacts",
-    component: Contacts
-
-  },
-  {
-    path: '/plants',
-    name: "plants",
-    component: Plants
-
-  },
-  {
-    path: '/lab',
-    name: "lab",
-    component: Lab
-
-  },
-  {
-    path: '/news',
-    name: "news",
-    component: News,
-    // children: [{ path: ':id', name: 'newsId', component: NewsId }],
-
-  },
-  {
-    path: '/news/:id',
-    name: 'newsId',
-    component: NewsId,
-    props: true
   }
 ];
 
