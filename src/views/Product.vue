@@ -29,7 +29,7 @@
 
             </div>
         </div>
-        <div class="product__gallery" v-if="props.img.find(item => item.code === route.params.id).gallery">
+        <div class="product__gallery" v-if="props.img.find(item => item.code === route.params.id).gallery.length > 0">
             <Slideshow :gallery="props.img.find(item => item.code === route.params.id).gallery" />
         </div>
         
