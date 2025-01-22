@@ -6,6 +6,20 @@ module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? '/ariannaarcara/' : '/',
   outputDir: "dist",
   configureWebpack: {
+    resolve: {
+      fallback: {
+        path: require.resolve('path-browserify'),
+        crypto: require.resolve('crypto-browserify'),
+        stream: require.resolve('stream-browserify'),
+        os: require.resolve('os-browserify'),
+      },
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        process: 'process/browser', // Polyfill per `process`
+        Buffer: ['buffer', 'Buffer'], // Polyfill per `Buffer`
+      }),
+    ],
     plugins: [
       // Define Bundler Build Feature Flags (This helps for tree shaking)
       new webpack.DefinePlugin({
