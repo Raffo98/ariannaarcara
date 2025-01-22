@@ -4,20 +4,26 @@ console.log("vue.config.js");
 
 const webpack = require("webpack");
 const process = require("process");
+
+const {defineConfig} = require('@vue/cli-service');
 // const path = require("path");
 
 
 module.exports = {
+  transpileDependencies: true,
   publicPath: process.env.NODE_ENV === 'production' ? '/ariannaarcara/' : '/',
   outputDir: "dist",
   configureWebpack: {
     resolve: {
       fallback: {
+        http: require.resolve("stream-http"),
         path: require.resolve('path-browserify'),
         crypto: require.resolve('crypto-browserify'),
         stream: require.resolve('stream-browserify'),
         os: require.resolve('os-browserify'),
         process: require.resolve('process/browser'),
+        url: require.resolve("url"),
+        assert: require.resolve("assert"),
 
       },
     },
