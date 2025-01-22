@@ -3,7 +3,7 @@
         <div class="accordion">
             <div class="accordion__header">
                 <div class="accordion__header__arrow"><img :class="{ rotate: isOpen }"
-                        :src="`${$assetsBasePath}/icons//arrow.svg`"></div> <!-- Freccia destra -->
+                        :src="`${$assetsBasePath}icons/arrow.svg`"></div> <!-- Freccia destra -->
                 <div class="accordion__header__title" v-html="props.titles[0].text"></div>
             </div>
             <div class="accordion__content" :class="{ open: isOpen }">

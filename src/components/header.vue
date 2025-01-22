@@ -18,7 +18,7 @@
       </div>
       <div class="header__box__hamburger" v-else>
         <button class="header__box__hamburger__btn" @click="dropdownMenu()">
-          <img class="header__box__hamburger__btn__icon" :src="`${$assetsBasePath}/icons/mobile/hamburger.svg`">
+          <img class="header__box__hamburger__btn__icon" :src="`${$assetsBasePath}icons/mobile/hamburger.svg`">
         </button>
         <div class="header__box__hamburger__buttons">
           <div class="header__box__hamburger__buttons__lang">
