@@ -18,6 +18,9 @@ module.exports = {
       new webpack.ProvidePlugin({
         process: 'process/browser', // Polyfill per `process`
         Buffer: ['buffer', 'Buffer'], // Polyfill per `Buffer`
+        'process.env': {
+          API_KEY: JSON.stringify(process.env.API_KEY),
+        },
       }),
     ],
     plugins: [
