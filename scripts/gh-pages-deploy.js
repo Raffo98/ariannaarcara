@@ -52,9 +52,8 @@
 // })();
 
 const execa = require("execa");
-const process = require("process");
 
-console.log("gh-pages")
+
 
 (async () => {
   try {
