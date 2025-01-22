@@ -15,7 +15,7 @@
 import Airtable from 'airtable';
 import 'dotenv/config';
 
-const apiKey = process.env.API_KEY;
+const apiKey = process.env.VUE_APP_API_KEY;
 
 if (!apiKey) {
   throw new Error("API_KEY non definita. Assicurati che sia presente nel file .env");

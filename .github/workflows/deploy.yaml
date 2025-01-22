@@ -3,25 +3,25 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # La tua branch di produzione (o quella su cui fai il merge)
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     
     steps:
-    # Checkout del codice dal repository
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    # Imposta la variabile d'ambiente per API_KEY
-    - name: Set up environment
-      run: echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV  # Imposta la secret come variabile d'ambiente
+      # Set the environment variable without fs or dotenv
+      - name: Set up API_KEY as environment variable
+        run: echo "VUE_APP_API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
 
-    # Installa le dipendenze
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    # Esegui lo script di deploy
-    - name: Deploy to GitHub Pages
-      run: node scripts/gh-pages-deploy.js
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        run: node scripts/gh-pages-deploy.js
