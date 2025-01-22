@@ -33,7 +33,7 @@ module.exports = {
         process: 'process/browser', // Polyfill per `process`
         Buffer: ['buffer', 'Buffer'], // Polyfill per `Buffer`
         'process.env': {
-          VUE_APP_API_KEY: JSON.stringify(process.env.API_KEY),
+          VUE_APP_API_KEY: JSON.stringify(process.env.VUE_APP_API_KEY),
         },
       }),
     ],
