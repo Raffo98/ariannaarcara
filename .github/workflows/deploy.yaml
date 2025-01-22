@@ -50,6 +50,10 @@ jobs:
     - name: Build project
       run: npm run build
 
+    - name: Export Environment Variables
+      run: echo "VUE_APP_API_KEY=${{ secrets.API_KEY }}" >> .env
+
+
     - name: Deploy to GitHub Pages
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
