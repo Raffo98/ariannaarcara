@@ -27,6 +27,9 @@ const execa = require("execa");
 
 (async () => {
   try {
+    await execa("git", ["config", "user.email", "raf.riccardelli@gmail.com"]);
+    await execa("git", ["config", "user.name", "Raffaele Riccardelli"]);
+
     await execa("git", ["checkout", "--orphan", "gh-pages"]);
     console.log("Building...");
     await execa("npm", ["run", "build"]);
