@@ -1,3 +1,27 @@
-- name: Generate env file
-  run: |
-    echo "API_KEY=${{ secrets.API_KEY }}" > .env
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # La tua branch di produzione (o quella su cui fai il merge)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # Checkout del codice dal repository
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Imposta la variabile d'ambiente per API_KEY
+    - name: Set up environment
+      run: echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV  # Imposta la secret come variabile d'ambiente
+
+    # Installa le dipendenze
+    - name: Install dependencies
+      run: npm install
+
+    # Esegui lo script di deploy
+    - name: Deploy to GitHub Pages
+      run: node scripts/gh-pages-deploy.js
