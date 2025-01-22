@@ -49,14 +49,18 @@
     "@yzfe/svgicon-loader": "^1.1.0",
     "@yzfe/vue-cli-plugin-svgicon": "~1.1.0",
     "babel-plugin-lodash": "^3.3.4",
+    "crypto-browserify": "^3.12.1",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^9.21.1",
     "execa": "^5.1.1",
     "gh-pages": "^6.1.1",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
     "prerender-spa-plugin-next": "^4.2.0",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.52.3",
-    "sass-loader": "^13.0.0"
+    "sass-loader": "^13.0.0",
+    "stream-browserify": "^3.0.0"
   },
   "eslintConfig": {
     "root": true,
