@@ -24,8 +24,7 @@ module.exports = {
         os: require.resolve('os-browserify'),
         process: require.resolve('process/browser'),
         url: require.resolve("url"),
-        assert: require.resolve("assert"),
-
+        assert: require.resolve("assert")
       },
     },
     plugins: [

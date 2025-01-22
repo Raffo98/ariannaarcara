@@ -53,8 +53,6 @@
 
 const execa = require("execa");
 
-
-
 (async () => {
   try {
     // Configura l'utente per i commit Git
