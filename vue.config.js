@@ -1,9 +1,11 @@
 // const PrerenderSPAPlugin = require("prerender-spa-plugin-next");
+
+console.log("vue.config.js");
+
 const webpack = require("webpack");
 const process = require("process");
 // const path = require("path");
 
-console.log("vue.config.js");
 
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? '/ariannaarcara/' : '/',
