@@ -12,6 +12,8 @@ module.exports = {
         crypto: require.resolve('crypto-browserify'),
         stream: require.resolve('stream-browserify'),
         os: require.resolve('os-browserify'),
+        process: require.resolve('process/browser'),
+
       },
     },
     plugins: [
