@@ -32,7 +32,7 @@
     </div>
     <div class="header__wrapper" :class="{ slideDown: isOpenMobile }">
       <button class="header__wrapper__btn" @click="dropdownMenu()">
-        <img class="header__wrapper__btn__icon" :src="`${$assetsBasePath}/icons/mobile/close.svg`">
+        <img class="header__wrapper__btn__icon" :src="`${$assetsBasePath}icons/mobile/close.svg`">
       </button>
       <sectionHeaderMobile v-for="(section, idx) in props.sections" :key="idx" :content="section" />
       <!-- <div class="header__box__hamburger__wrapper__buttons"> -->

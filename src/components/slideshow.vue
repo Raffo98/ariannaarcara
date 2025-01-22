@@ -10,11 +10,11 @@
             <template #addons>
                 <CarouselNavigation>
                     <template #prev>
-                        <div class="arrow" @click="prev"><img :src="`${$assetsBasePath}/icons/arrow-left.svg`" alt="" />
+                        <div class="arrow" @click="prev"><img :src="`${$assetsBasePath}icons/arrow-left.svg`" alt="" />
                         </div>
                     </template>
                     <template #next>
-                        <div class="arrow" @click="next"><img :src="`${$assetsBasePath}/icons/arrow-right.svg`"
+                        <div class="arrow" @click="next"><img :src="`${$assetsBasePath}icons/arrow-right.svg`"
                                 alt="" />
                         </div>
                     </template>
