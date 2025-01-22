@@ -1,7 +1,7 @@
 <template>
     <div class="filter" ref="filter" v-if="minmax.min != minmax.max">
         <div class="filter__button" @click="isOpen"
-            :style="[minmax.isFilterOpen ? { borderBottom: '1px solid white !important' } : '']">
+        :class="[minmax.isFilterOpen ? 'has-border' : '']">
             <div v-html="props.content.title"></div>
             <img :src="`${$assetsBasePath}/icons/arrow-down.svg`" alt="" :class="{ rotate: minmax.isFilterOpen }" />
 
@@ -221,5 +221,9 @@ input[type="number"]:focus {
     transform-origin: center;
     transform: rotate(180deg);
 
+}
+
+.has-border {
+  border-bottom: 1px solid white !important;
 }
 </style>
