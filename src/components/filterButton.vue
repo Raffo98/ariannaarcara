@@ -38,6 +38,7 @@ import VueSlider from 'vue-slider-component';
 import 'vue-slider-component/theme/default.css';
 import { useStateStore } from "@/utilities/store/store";
 import { watch, ref } from "@vue/runtime-core";
+import { onClickOutside } from '@vueuse/core';
 
 const props = defineProps({
     data: Array,
@@ -48,6 +49,7 @@ const props = defineProps({
 
 const minmax = useStateStore();
 const slider = ref(null);
+const filter = ref(null);
 const options = ref({
     dotOptions: [
         {
@@ -64,6 +66,8 @@ const options = ref({
         },
     ],
 });
+
+onClickOutside(filter, () => { if (minmax.isFilterOpen) { minmax.updateFilterState(false) } });
 
 
 function isOpen() {
