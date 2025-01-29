@@ -1,12 +1,12 @@
 <template>
-    <div class="filter" ref="filter" v-if="minmax.min != minmax.max">
+    <div class="filter" v-if="minmax.min != minmax.max">
         <div class="filter__button" @click="isOpen"
         :class="[minmax.isFilterOpen ? 'has-border' : '']">
             <div v-html="props.content.title"></div>
             <img :src="`${$assetsBasePath}icons/arrow-down.svg`" alt="" :class="{ rotate: minmax.isFilterOpen }" />
 
         </div>
-        <div class="filter__box" v-show="minmax.isFilterOpen">
+        <div class="filter__box" ref="filter" v-show="minmax.isFilterOpen">
             <!-- {{ value }}
             {{ minmax.min }}
             {{ minmax.max }}
