@@ -1,5 +1,5 @@
 <template>
-    <div class="filter" v-if="minmax.min != minmax.max">
+    <div class="filter" ref="filterBox" v-if="minmax.min != minmax.max">
         <div class="filter__button" @click="isOpen"
         :class="[minmax.isFilterOpen ? 'has-border' : '']">
             <div v-html="props.content.title"></div>
@@ -38,6 +38,8 @@ import VueSlider from 'vue-slider-component';
 import 'vue-slider-component/theme/default.css';
 import { useStateStore } from "@/utilities/store/store";
 import { watch, ref } from "@vue/runtime-core";
+import { onClickOutside } from '@vueuse/core';
+
 
 const props = defineProps({
     data: Array,
@@ -47,6 +49,7 @@ const props = defineProps({
 
 
 const minmax = useStateStore();
+const filterBox = ref(null);
 const slider = ref(null);
 const options = ref({
     dotOptions: [
@@ -93,6 +96,15 @@ function inputHandlerTextMax(e) {
 
     // minmax.updatePartialMinMax(e[0], e[1]);
 }
+
+onClickOutside(filterBox, () => {
+  console.log("Click fuori dal filtro rilevato!");
+  console.log("Valore di minmax.isFilterOpen:", minmax.isFilterOpen);
+  if (minmax.isFilterOpen)
+    console.log("è apertoooooooooo");
+    minmax.updateFilterState(false);
+  }
+);
 
 
 watch(() => minmax.min, () => {
