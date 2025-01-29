@@ -19,7 +19,7 @@ import { onMounted, provide, ref, watch } from "@vue/runtime-core";
 import useTvaMq from "./plugins/tvaMq.js";
 import { useI18n } from "vue-i18n";
 import { useStateStore } from "@/utilities/store/store";
-import { onClickOutside } from '@vueuse/core';
+// import { onClickOutside } from '@vueuse/core';
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import airtable from "@/plugins/airtable.js";
@@ -53,11 +53,8 @@ const dataReady = ref(false);
 provide("$tvaMq", $tvaMq);
 provide("version", version);
 
-
-const modal = ref(null);
 const stateModal = useStateStore();
 
-// const idPage = ref(stateModal.pageSection);
 const isMobile = ref('');
 
 // Calling this here is equivalent to calling it in
@@ -107,7 +104,6 @@ const fetchProductData = async () => {
 
         productDb.value.sort((a, b) => a.order - b.order);
         fetchNextPage();
-        console.log(productDb.value)
       },
       (err) => {
         if (err) {
@@ -116,7 +112,6 @@ const fetchProductData = async () => {
         }
         else {
           ImageDb.value = createImgArray();
-          console.log(ImageDb.value);
           resolve();
         }
       }
@@ -222,7 +217,6 @@ watch($tvaMq, () => {
 }
 );
 
-onClickOutside(modal, () => { if (stateModal.isOpen) { stateModal.changeState(false) } });
 
 function setLanguage(value) {
   const defaultLang = "it";

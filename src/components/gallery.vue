@@ -55,6 +55,7 @@ const filterCheck = ref();
 onClickOutside(filterBox, () => {
   console.log("Click fuori dal filtro rilevato!");
   if (minmax.isFilterOpen) {
+    console.log("è apertoooooooooo");
     minmax.updateFilterState(false);
   }
 });

@@ -76,7 +76,6 @@ onBeforeMount(() => {
             });
         }
     }
-console.log(product.value);
 
 });
 

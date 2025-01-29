@@ -18,8 +18,6 @@ import process from 'process';
 
 const apiKey = process.env.VUE_APP_API_KEY;
 
-console.log("superato", apiKey);
-
 if (!apiKey) {
   throw new Error("API_KEY non definita. Assicurati che sia presente nel file .env");
 }

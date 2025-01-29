@@ -73,7 +73,6 @@ function isOpen() {
 
 function inputHandler(e) {
     // minmax.updateMinMax(props.min, props.max);
-    console.log(e);
     minmax.updatePartialMinMax(e[0], e[1]);
 }
 
@@ -86,7 +85,6 @@ function inputHandlerTextMin(e) {
 }
 
 function inputHandlerTextMax(e) {
-    console.log(e.target.valueAsNumber);
     if (e.target.valueAsNumber <= minmax.max) {
         minmax.updatePartialMinMax(minmax.partialMin, e.target.valueAsNumber);
         // inputHandler([minmax.partialMin, e.target.valueAsNumber]);
