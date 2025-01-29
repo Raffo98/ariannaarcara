@@ -1,9 +1,12 @@
 <template>
     <div class="gallery">
         <div v-if="dataReady">
-            <PriceFilter ref="filterBox" :content="props.content" />
+            <div ref="filterBox">
+                <PriceFilter :content="props.content" />
+            </div>
             <div class="gallery__wrapper">
-                <GalleryBox v-for="(product, idx) in filteredData" :key="idx" :product="product" :img="props.img.find(img => img.order === product.order)" />
+                <GalleryBox v-for="(product, idx) in filteredData" :key="idx" :product="product"
+                    :img="props.img.find(img => img.order === product.order)" />
             </div>
         </div>
     </div>
