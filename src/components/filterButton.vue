@@ -102,7 +102,7 @@ onClickOutside(filterBox, () => {
   console.log("Valore di minmax.isFilterOpen:", minmax.isFilterOpen);
   if (minmax.isFilterOpen)
     console.log("è apertoooooooooo");
-    minmax.updateFilterState(minmax.isFilterOpen);
+    isOpen();
   }
 );
 
