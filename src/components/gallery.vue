@@ -54,11 +54,12 @@ const filterCheck = ref();
 // onClickOutside(filterBox, () => { if (minmax.isFilterOpen) { minmax.updateFilterState(false) } });
 onClickOutside(filterBox, () => {
   console.log("Click fuori dal filtro rilevato!");
-  if (minmax.isFilterOpen) {
+  console.log("Valore di minmax.isFilterOpen:", minmax.isFilterOpen);
+  if (minmax.isFilterOpen)
     console.log("è apertoooooooooo");
     minmax.updateFilterState(false);
   }
-});
+);
 
 
 
