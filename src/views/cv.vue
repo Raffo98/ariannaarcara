@@ -2,7 +2,7 @@
     <div class="cv">
         <div class="cv__bio" v-html="props.content.bio"></div>
         <div class="cv__pic">
-            <img :src="`${$assetsBasePath}/cv/arianna.jpg`" alt="">
+            <img :src="`${$assetsBasePath}cv/arianna.jpg`" alt="">
             <div class="cv__pic__copyright" v-html="props.content.copyright"></div>
         </div>
         <div class="cv__exhibitions">

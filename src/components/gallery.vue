@@ -1,7 +1,7 @@
 <template>
     <div class="gallery">
         <div v-if="dataReady">
-            <PriceFilter :content="props.content" />
+            <PriceFilter ref="filterBox" :content="props.content" />
             <div class="gallery__wrapper">
                 <GalleryBox v-for="(product, idx) in filteredData" :key="idx" :product="product" :img="props.img.find(img => img.order === product.order)" />
             </div>
@@ -19,9 +19,12 @@ import { useI18n } from "vue-i18n";
 import { watch } from "@vue/runtime-core";
 import { useRoute } from 'vue-router'
 import { computed } from "vue";
+import { onClickOutside } from '@vueuse/core';
+
 
 const route = useRoute();
 const i18n = useI18n();
+const filterBox = ref(null);
 const props = defineProps({
     data: Array,
     content: Object,
@@ -44,6 +47,9 @@ const filter = computed(() => {
 const minmax = useStateStore();
 const dataReady = ref(false);
 const filterCheck = ref();
+
+onClickOutside(filterBox, () => { if (minmax.isFilterOpen) { minmax.updateFilterState(false) } });
+
 
 
 

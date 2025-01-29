@@ -6,7 +6,7 @@
             <img :src="`${$assetsBasePath}icons/arrow-down.svg`" alt="" :class="{ rotate: minmax.isFilterOpen }" />
 
         </div>
-        <div class="filter__box" ref="filter" v-show="minmax.isFilterOpen">
+        <div class="filter__box" v-show="minmax.isFilterOpen">
             <!-- {{ value }}
             {{ minmax.min }}
             {{ minmax.max }}
@@ -38,7 +38,6 @@ import VueSlider from 'vue-slider-component';
 import 'vue-slider-component/theme/default.css';
 import { useStateStore } from "@/utilities/store/store";
 import { watch, ref } from "@vue/runtime-core";
-import { onClickOutside } from '@vueuse/core';
 
 const props = defineProps({
     data: Array,
@@ -49,7 +48,6 @@ const props = defineProps({
 
 const minmax = useStateStore();
 const slider = ref(null);
-const filter = ref(null);
 const options = ref({
     dotOptions: [
         {
@@ -67,7 +65,6 @@ const options = ref({
     ],
 });
 
-onClickOutside(filter, () => { if (minmax.isFilterOpen) { minmax.updateFilterState(false) } });
 
 
 function isOpen() {

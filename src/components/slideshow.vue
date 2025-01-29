@@ -3,7 +3,7 @@
         <Carousel :items-to-show="1" :wrap-around="true" :autoplay="false">
             <Slide v-for="(image, index) in images" :key="index">
                 <div class="slide">
-                    <img :src="route.name === 'about' ? `${$assetsBasePath}/about/${image}` : image" alt=""
+                    <img :src="route.name === 'about' ? `${$assetsBasePath}about/${image}` : image" alt=""
                         class="carousel-image" />
                 </div>
             </Slide>
