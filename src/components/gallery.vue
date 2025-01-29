@@ -51,7 +51,13 @@ const minmax = useStateStore();
 const dataReady = ref(false);
 const filterCheck = ref();
 
-onClickOutside(filterBox, () => { if (minmax.isFilterOpen) { minmax.updateFilterState(false) } });
+// onClickOutside(filterBox, () => { if (minmax.isFilterOpen) { minmax.updateFilterState(false) } });
+onClickOutside(filterBox, () => {
+  console.log("Click fuori dal filtro rilevato!");
+  if (minmax.isFilterOpen) {
+    minmax.updateFilterState(false);
+  }
+});
 
 
 
