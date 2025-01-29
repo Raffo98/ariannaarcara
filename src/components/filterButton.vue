@@ -71,6 +71,7 @@ const options = ref({
 
 
 function isOpen() {
+    console.log("ispoennnn");
     minmax.updateFilterState(minmax.isFilterOpen);
 }
 
