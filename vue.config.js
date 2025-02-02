@@ -2,8 +2,8 @@ const webpack = require("webpack");
 
 module.exports = {
   transpileDependencies: true,
-  publicPath: '/ariannaarcara/', // Corretto per GitHub Pages
-  // publicPath: '/', // Corretto per GitHub Pages
+  // publicPath: '/ariannaarcara/', // Corretto per GitHub Pages
+  publicPath: '/', 
   outputDir: "dist",
   
   configureWebpack: {
