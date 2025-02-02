@@ -1,7 +1,6 @@
 <template>
     <div class="filter" ref="filterBox" v-if="minmax.min != minmax.max">
-        <div class="filter__button" @click="isOpen"
-        :class="[minmax.isFilterOpen ? 'has-border' : '']">
+        <div class="filter__button" @click="isOpen" :class="[minmax.isFilterOpen ? 'has-border' : '']">
             <div v-html="props.content.title"></div>
             <img :src="`${$assetsBasePath}icons/arrow-down.svg`" alt="" :class="{ rotate: minmax.isFilterOpen }" />
 
@@ -99,12 +98,14 @@ function inputHandlerTextMax(e) {
 }
 
 onClickOutside(filterBox, () => {
-  console.log("Click fuori dal filtro rilevato!");
-  console.log("Valore di minmax.isFilterOpen:", minmax.isFilterOpen);
-  if (minmax.isFilterOpen)
-    console.log("è apertoooooooooo");
-    isOpen();
-  }
+    console.log("Click fuori dal filtro rilevato!");
+    console.log("Valore di minmax.isFilterOpen:", minmax.isFilterOpen);
+    if (minmax.isFilterOpen == true) {
+        console.log("è apertoooooooooo");
+        isOpen();
+    }
+
+}
 );
 
 
@@ -236,6 +237,6 @@ input[type="number"]:focus {
 }
 
 .has-border {
-  border-bottom: 1px solid white !important;
+    border-bottom: 1px solid white !important;
 }
 </style>

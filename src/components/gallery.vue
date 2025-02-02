@@ -47,31 +47,6 @@ const minmax = useStateStore();
 const dataReady = ref(false);
 const filterCheck = ref();
 
-// onClickOutside(filterBox, () => { if (minmax.isFilterOpen) { minmax.updateFilterState(false) } });
-
-
-
-
-
-
-
-// watch(() => filter.value, () => {
-//     fetchData();
-//     filterCheck.value = filter.value;
-// });
-
-
-// watch(() => minmax.partialMax, () => {
-//     fetchData();
-// });
-
-// watch(() => minmax.partialMin, () => {
-//     fetchData();
-// });
-
-
-
-
 watch(() => [filter.value, minmax.partialMax, minmax.partialMin, i18n.locale.value], ([newFilter]) => {
     fetchData();
     filterCheck.value = newFilter;

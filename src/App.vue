@@ -5,9 +5,6 @@
     </div>
     <div class="container" v-if="dataReady">
       <router-view :content="$tm(`${path}`)" :data="filteredData" :img="ImageDb" :sections="$tm('header')"></router-view>
-      <!-- <router-view :content="$tm(`${path}`)" :data="i18n.locale.value === 'en' ? productDb.filter(product => product.lang === 'eng') : productDb.filter(product => product.lang === 'ita')" :sections="$tm('header')"></router-view> -->
-      <!-- <router-view :content="content" :preview="path == 'home' ? newsPreview : null"></router-view> -->
-      <!-- <router-view :content="$tm('home')"></router-view> -->
     </div>
     <Footer :content="$tm('footer')" />
   </div>
@@ -19,7 +16,6 @@ import { onMounted, provide, ref, watch } from "@vue/runtime-core";
 import useTvaMq from "./plugins/tvaMq.js";
 import { useI18n } from "vue-i18n";
 import { useStateStore } from "@/utilities/store/store";
-// import { onClickOutside } from '@vueuse/core';
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import airtable from "@/plugins/airtable.js";
@@ -62,12 +58,9 @@ const isMobile = ref('');
 // const instanceAttrs = getCurrentInstance().attrs;
 setLanguage();
 
-// const newsDb = ref([]);
 const productDb = ref([]);
 const ImageDb = ref([]);
 
-// const tagsList = ref([]);
-// const content = ref({});
 
 const filteredData = computed(() => {
   return productDb.value.filter(item => item.lang === i18n.locale.value);
@@ -119,33 +112,6 @@ const fetchProductData = async () => {
   });
 };
 
-//PRODUCTS SECTION
-// Funzione per completare i dati mancanti
-// const completeMissingData = () => {
-//   // Raggruppa i prodotti per lingua
-//   const productsIta = productDb.value.filter(product => product.lang === 'ita');
-//   const productsEng = productDb.value.filter(product => product.lang === 'eng');
-
-//   // Mappa di prodotti in italiano per codice
-//   const itaMap = new Map(productsIta.map(product => [product.code, product]));
-
-//   // Loop sugli elementi in inglese e copia i dati mancanti
-//   productsEng.forEach(engProduct => {
-//     const itaProduct = itaMap.get(engProduct.code);
-
-//     if (itaProduct) {
-//       // Se `image` è mancante o vuoto, copia quello italiano
-//       if (!engProduct.img || engProduct.img === '') {
-//         engProduct.img = itaProduct.img;
-//       }
-
-//       // Se `gallery` è mancante o vuoto, copia quello italiano
-//       if (!engProduct.gallery || engProduct.gallery.length === 0) {
-//         engProduct.gallery = itaProduct.gallery;
-//       }
-//     }
-//   });
-// };
 
 const createImgArray = () => {
   return productDb.value
@@ -187,25 +153,6 @@ onMounted(() => {
   }
 });
 
-
-// watchEffect(() => {
-//   // Aggiorna content solo quando productDb.value è definito
-
-//   if (dataReady.value || 1 == 1) {
-
-//     if (path.value === 'news') {
-//       content.value = { static: i18n.tm(path.value), dinamic: newsDb.value, tags: tagsList.value };
-//     }
-//     else if (path.value === 'newsId') {
-//       const newsId = newsDb.value.filter(data => data.id == route.params.id);
-//       content.value = { dinamic: newsId[0] }
-//     }
-//     else {
-//       content.value = i18n.tm(path.value);
-
-//     }
-//   }
-// });
 
 
 watch($tvaMq, () => {
