@@ -83,7 +83,7 @@ function prev() {
     max-width: 100%;
     /* Mantiene le proporzioni */
     object-fit: contain;
-    /* Adatta l'immagine senza tagliare */
+    /* Adatta l'immagine senza tagliare nulla */
 }
 
 .arrow {
